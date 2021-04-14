@@ -1,0 +1,4 @@
+--patch-module
+com.boba.bobaapp=_
+--add-reads
+com.boba.bobaapp=ALL-UNNAMED

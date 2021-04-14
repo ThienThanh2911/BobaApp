@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="parent" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.RegisterController">
+   <children>
+      <ImageView fitHeight="94.0" fitWidth="112.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../../../images/user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="12.0" layoutY="131.0" text="REGISTRATION FORM">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="12.0" layoutY="160.0" prefHeight="18.0" prefWidth="193.0" text="Fill the form for registration" textAlignment="RIGHT" textFill="#a3a3a3">
+         <font>
+            <Font name="Ebrima Bold" size="14.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView glyphName="CLOSE" layoutX="378.0" layoutY="21.0" onMouseClicked="#close_app" size="20.0" styleClass="closeBtn">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <FontAwesomeIconView glyphName="ARROW_LEFT" layoutX="5.0" layoutY="21.0" onMouseClicked="#back_to_menu" size="20.0" styleClass="backBtn">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <Label layoutX="30.0" layoutY="212.0" prefHeight="50.0" prefWidth="95.0" stylesheets="@../../../../java/com/boba/values/stylelogin.css" text="Fullname" textAlignment="RIGHT" textFill="#a3a3a3">
+         <font>
+            <Font name="Ebrima Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="262.0" prefHeight="50.0" prefWidth="95.0" stylesheets="@../../../../java/com/boba/values/stylelogin.css" text="Email" textAlignment="RIGHT" textFill="#a3a3a3">
+         <font>
+            <Font name="Ebrima Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="312.0" prefHeight="50.0" prefWidth="95.0" stylesheets="@../../../../java/com/boba/values/stylelogin.css" text="Username" textAlignment="RIGHT" textFill="#a3a3a3">
+         <font>
+            <Font name="Ebrima Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="358.0" prefHeight="50.0" prefWidth="95.0" stylesheets="@../../../../java/com/boba/values/stylelogin.css" text="Password" textAlignment="RIGHT" textFill="#a3a3a3">
+         <font>
+            <Font name="Ebrima Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="414.0" prefHeight="37.0" prefWidth="95.0" stylesheets="@../../../../java/com/boba/values/stylelogin.css" text="Confirm Password" textAlignment="CENTER" textFill="#a3a3a3" wrapText="true">
+         <font>
+            <Font name="Ebrima Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="461.0" prefHeight="37.0" prefWidth="95.0" stylesheets="@../../../../java/com/boba/values/stylelogin.css" text="ReCaptcha" textAlignment="CENTER" textFill="#a3a3a3" wrapText="true">
+         <font>
+            <Font name="Ebrima Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFullname" layoutX="125.0" layoutY="222.0" prefHeight="29.0" prefWidth="245.0" />
+      <TextField fx:id="txtEmail" layoutX="125.0" layoutY="272.0" prefHeight="29.0" prefWidth="245.0" />
+      <TextField fx:id="txtUser" layoutX="125.0" layoutY="322.0" prefHeight="29.0" prefWidth="245.0" />
+      <PasswordField fx:id="txtPass" layoutX="125.0" layoutY="368.0" prefHeight="29.0" prefWidth="245.0" />
+      <PasswordField fx:id="txtCPass" layoutX="125.0" layoutY="418.0" prefHeight="29.0" prefWidth="245.0" />
+      <TextField fx:id="txtReCapt" layoutX="125.0" layoutY="465.0" prefHeight="29.0" prefWidth="112.0" />
+      <JFXButton fx:id="btnRegister" layoutX="50.0" layoutY="513.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" styleClass="loginBtn" stylesheets="@../values/stylelogin.css" text="Register" />
+      <Pane layoutX="248.0" layoutY="466.0" prefHeight="29.0" prefWidth="95.0" styleClass="reCaptcha" stylesheets="@../values/stylelogin.css">
+         <children>
+            <Label fx:id="reCaptcha" alignment="CENTER" layoutY="2.0" prefHeight="29.0" prefWidth="95.0" styleClass="reCaptcha" stylesheets="@../values/stylelogin.css" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="18.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <Pane layoutX="346.0" layoutY="466.0" onMouseClicked="#reloadCaptcha" prefHeight="29.0" prefWidth="25.0" styleClass="reCaptcha" stylesheets="@../values/stylelogin.css">
+         <children>
+            <FontAwesomeIconView glyphName="REFRESH" layoutX="7.0" layoutY="19.0" />
+         </children>
+      </Pane>
+      <Label fx:id="error" layoutX="125.0" layoutY="183.0" prefHeight="29.0" prefWidth="245.0" textAlignment="RIGHT" textFill="RED">
+         <font>
+            <Font name="Ebrima Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@../../../../java/com/boba/values/stylelogin.css" />
+      <URL value="@../values/stylelogin.css" />
+   </stylesheets>
+</AnchorPane>

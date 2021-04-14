@@ -1,0 +1,15 @@
+com\boba\bobaapp\Utils.class
+com\boba\pojo\User.class
+com\boba\service\CategoryService.class
+com\boba\bobaapp\RegisterController.class
+com\boba\pojo\Product.class
+com\boba\pojo\Category.class
+module-info.class
+com\boba\bobaapp\ItemController.class
+com\boba\service\ProductService.class
+com\boba\service\UserService.class
+com\boba\bobaapp\MainController.class
+com\boba\bobaapp\App.class
+com\boba\service\JdbcUtils.class
+com\boba\bobaapp\LoginController.class
+com\boba\bobaapp\CustomerController.class
