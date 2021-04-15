@@ -26,8 +26,20 @@ public class UserService {
     public UserService(Connection conn) {
         this.conn = conn;
     }
+  
+    public boolean getUser(String user) throws SQLException {
+        try (Connection conn = JdbcUtils.getConn()) {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM user WHERE username = '"+user+"'");
+            boolean have = false;
+            while (rs.next()) {
+                have = true;
+            }
+            return have;
+        }
+    }
     
-    public User getUsers(String user, String password) throws SQLException {
+    public User checkUser(String user, String password) throws SQLException {
         try (Connection conn = JdbcUtils.getConn()) {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM user WHERE username = '"+user+"' AND password = '"+password+"'");

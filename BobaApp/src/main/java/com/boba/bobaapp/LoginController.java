@@ -81,7 +81,7 @@ public class LoginController implements Initializable {
                 }
                 Connection conn = JdbcUtils.getConn();
                 UserService s = new UserService(conn); 
-                User u = s.getUsers(username, password);
+                User u = s.checkUser(username, password);
                 if(u != null && u.getRole().equals("ADMIN")){
                     System.out.println(u.getRole());
                     try {

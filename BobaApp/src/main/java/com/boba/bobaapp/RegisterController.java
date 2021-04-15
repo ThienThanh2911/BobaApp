@@ -148,15 +148,19 @@ public class RegisterController implements Initializable {
                 try {
                     conn = JdbcUtils.getConn();
                     UserService s = new UserService(conn);
-                    User u = new User();
-                    u.setFullname(txtFullname.getText());
-                    u.setEmail(txtEmail.getText());
-                    u.setUsername(txtUser.getText());
-                    u.setPassword(getMD5(txtPass.getText()));
-                    s.addUser(u);
-                    Utils.getAlertBox("You have successfully registered!", Alert.AlertType.INFORMATION, "Successful", "SIGN UP SUCCESSFUL").show();
-                    Parent root = FXMLLoader.load(getClass().getResource("loginUI.fxml"));
-                    App.stage.getScene().setRoot(root);
+                    if(!s.getUser(txtUser.getText())){
+                        User u = new User();
+                        u.setFullname(txtFullname.getText());
+                        u.setEmail(txtEmail.getText());
+                        u.setUsername(txtUser.getText());
+                        u.setPassword(getMD5(txtPass.getText()));
+                        s.addUser(u);
+                        Utils.getAlertBox("You have successfully registered!", Alert.AlertType.INFORMATION, "Successful", "SIGN UP SUCCESSFUL").show();
+                        Parent root = FXMLLoader.load(getClass().getResource("loginUI.fxml"));
+                        App.stage.getScene().setRoot(root);
+                    }else{
+                        this.error.setText("This Username is already registered");
+                    }
                 } catch (SQLException ex) {
                     Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {

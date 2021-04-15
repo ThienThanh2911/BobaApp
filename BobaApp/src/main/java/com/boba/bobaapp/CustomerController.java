@@ -6,6 +6,8 @@
 package com.boba.bobaapp;
 
 import com.boba.pojo.Product;
+import com.boba.service.JdbcUtils;
+import com.boba.service.ProductService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,9 +24,13 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CustomerController implements Initializable{
     @FXML
@@ -49,75 +55,70 @@ public class CustomerController implements Initializable{
     private Image image;
     private MyListener myListener;
     
-    private List<Product> getData() {
-        List<Product> products = new ArrayList<>();
-        Product product;
-
-        product = new Product();
-        product.setName("Kiwi");
-        product.setImage("/images/kiwi.png");
-        String currency="25000.0";
-        BigDecimal bigDecimalCurrency=new BigDecimal(currency);
-        product.setPrice(bigDecimalCurrency);
-        product.setColor("6A7324");
-        products.add(product);
-
-        return products;
-    }
     
     private void setChosenProduct(Product product) {
-    fruitNameLable.setText(product.getName());
-    fruitPriceLabel.setText(product.getPrice().toString());
-    image = new Image(getClass().getResourceAsStream(product.getImage()));
-    fruitImg.setImage(image);
-    chosenFruitCard.setStyle("-fx-background-color: #" + product.getColor() + ";\n" +
-    "    -fx-background-radius: 30;");
+        fruitNameLable.setText(product.getName());
+        fruitPriceLabel.setText(product.getPrice().toString());
+        image = new Image(getClass().getResourceAsStream(product.getImage()));
+        fruitImg.setImage(image);
+        chosenFruitCard.setStyle("-fx-background-color: #" + product.getColor() + ";\n" +
+        "    -fx-background-radius: 30;");
     }
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        products.addAll(getData());
-        if (products.size() > 0) {
-            setChosenProduct(products.get(0));
-            myListener = new MyListener() {
-                @Override
-                public void onClickListener(Product product) {
-                    setChosenProduct(product);
-                }
-            };
-        }
-        int column = 0;
-        int row = 1;
+        Connection conn;
         try {
-        for (int i = 0; i < products.size(); i++) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("item.fxml"));
+            conn = JdbcUtils.getConn();
+            ProductService s = new ProductService(conn); 
+            List<Product> productss = s.getProducts("");
 
-        AnchorPane anchorPane = fxmlLoader.load();
 
-        ItemController itemController = fxmlLoader.getController();
-        itemController.setData(products.get(i),myListener);
+            products.addAll(productss);
+            if (products.size() > 0) {
+                setChosenProduct(products.get(0));
+                myListener = new MyListener() {
+                    @Override
+                    public void onClickListener(Product product) {
+                        setChosenProduct(product);
+                    }
+                };
+            }
+            int column = 0;
+            int row = 1;
+            try {
+            for (int i = 0; i < products.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("item.fxml"));
 
-        if (column == 3) {
-        column = 0;
-        row++;
-        }
+                AnchorPane anchorPane = fxmlLoader.load();
 
-        grid.add(anchorPane, column++, row); //(child,column,row)
-        //set grid width
-        grid.setMinWidth(Region.USE_COMPUTED_SIZE);
-        grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-        grid.setMaxWidth(Region.USE_PREF_SIZE);
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(products.get(i),myListener);
 
-        //set grid height
-        grid.setMinHeight(Region.USE_COMPUTED_SIZE);
-        grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-        grid.setMaxHeight(Region.USE_PREF_SIZE);
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
 
-        GridPane.setMargin(anchorPane, new Insets(10));
-        }
-        } catch (IOException e) {
-        e.printStackTrace();
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
