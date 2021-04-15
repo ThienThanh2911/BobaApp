@@ -76,11 +76,9 @@ public class CustomerController implements Initializable{
 
             products.addAll(productss);
             if (products.size() > 0) {
-                setChosenProduct(products.get(0));
                 myListener = new MyListener() {
                     @Override
                     public void onClickListener(Product product) {
-                        setChosenProduct(product);
                     }
                 };
             }

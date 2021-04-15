@@ -76,19 +76,28 @@
       <PasswordField fx:id="txtPass" layoutX="125.0" layoutY="368.0" prefHeight="29.0" prefWidth="245.0" />
       <PasswordField fx:id="txtCPass" layoutX="125.0" layoutY="418.0" prefHeight="29.0" prefWidth="245.0" />
       <TextField fx:id="txtReCapt" layoutX="125.0" layoutY="465.0" prefHeight="29.0" prefWidth="112.0" />
-      <JFXButton fx:id="btnRegister" layoutX="50.0" layoutY="513.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" styleClass="loginBtn" stylesheets="@../values/stylelogin.css" text="Register" />
+      <JFXButton fx:id="btnRegister" defaultButton="true" layoutX="50.0" layoutY="513.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" styleClass="loginBtn" stylesheets="@../values/stylelogin.css" text="Register">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
       <Pane layoutX="248.0" layoutY="466.0" prefHeight="29.0" prefWidth="95.0" styleClass="reCaptcha" stylesheets="@../values/stylelogin.css">
          <children>
             <Label fx:id="reCaptcha" alignment="CENTER" layoutY="2.0" prefHeight="29.0" prefWidth="95.0" styleClass="reCaptcha" stylesheets="@../values/stylelogin.css" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Ebrima Bold" size="18.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
             </Label>
          </children></Pane>
       <Pane layoutX="346.0" layoutY="466.0" onMouseClicked="#reloadCaptcha" prefHeight="29.0" prefWidth="25.0" styleClass="reCaptcha" stylesheets="@../values/stylelogin.css">
          <children>
             <FontAwesomeIconView glyphName="REFRESH" layoutX="7.0" layoutY="19.0" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Pane>
       <Label fx:id="error" layoutX="125.0" layoutY="183.0" prefHeight="29.0" prefWidth="245.0" textAlignment="RIGHT" textFill="RED">
          <font>

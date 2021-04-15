@@ -26,21 +26,13 @@
          <left>
             <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="580.0" prefWidth="335.0" stylesheets="@../values/style.css">
+                  <Pane prefHeight="50.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="710.0" prefWidth="335.0" stylesheets="@../values/style.css">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
                      <children>
-                        <ScrollPane fx:id="scroll1" opacity="0.0" prefHeight="570.0" prefWidth="785.0" styleClass="search-box" stylesheets="@../values/style.css">
-                           <content>
-                              <GridPane fx:id="grid1" prefHeight="7.0" prefWidth="1.0">
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                                 </rowConstraints>
-                              </GridPane>
-                           </content>
-                        </ScrollPane>
+                        <ScrollPane prefHeight="352.0" prefWidth="335.0" styleClass="transparent" stylesheets="@../values/style.css" />
                         <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
                            <children>
                               <Separator prefHeight="5.0" prefWidth="100.0" />
@@ -104,7 +96,7 @@
                         <String fx:value="shadow" />
                      </styleClass>
                   </VBox>
-                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                  <Pane prefHeight="50.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
                </children>
                <stylesheets>
                   <URL value="@../values/style.css" />
@@ -120,21 +112,21 @@
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
                      <children>
-                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="358.0">
+                        <HBox alignment="CENTER" prefHeight="69.0" prefWidth="343.0">
                            <children>
-                              <Label prefHeight="49.0" prefWidth="128.0" text="BOBA" textFill="#878787">
+                              <Label prefHeight="46.0" prefWidth="128.0" text="BOBA" textFill="#878787">
                                  <font>
                                     <Font name="Cambria Bold" size="40.0" />
                                  </font>
                               </Label>
-                              <Label text="Application" textFill="#878787">
+                              <Label prefHeight="49.0" prefWidth="203.0" text="Application" textFill="#878787">
                                  <font>
                                     <Font name="Cambria" size="40.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <Pane prefHeight="65.0" prefWidth="465.0" HBox.hgrow="ALWAYS">
+                        <Pane prefHeight="90.0" prefWidth="457.0" HBox.hgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" layoutX="24.0" layoutY="11.0" prefHeight="38.0" prefWidth="380.0" stylesheets="@../values/style.css">
                                  <children>
@@ -163,7 +155,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="scroll" prefHeight="570.0" prefWidth="785.0" styleClass="search-box" stylesheets="@../values/style.css">
+                        <ScrollPane fx:id="scroll" prefHeight="740.0" prefWidth="785.0" styleClass="search-box" stylesheets="@../values/style.css">
                            <content>
                               <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                                  <rowConstraints>
