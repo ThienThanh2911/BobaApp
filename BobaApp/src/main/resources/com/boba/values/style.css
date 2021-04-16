@@ -85,3 +85,37 @@
     -fx-border-style: solid;
     -fx-border-radius: 10px;
 }
+
+.btn-menu {
+    -fx-background-radius-top: 10px;
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 0 1px;
+}
+
+.btn-menu:first-child {
+    -fx-border-width: 0;
+}
+
+.btn-menu:hover {
+    -fx-background-color: #a3a3a3;
+}
+
+.btn-menu:hover .text {
+    -fx-underline: true;
+}
+
+.btn-menu:focused {
+    -fx-background-color: #a3a3a3;
+    -fx-faint-focus-color: #a3a3a3;
+}
+
+/* CSS Manager Form */
+
+.btn-Add {
+    -fx-background-color: #33FF33;
+}
+
+.btn-Remove {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
