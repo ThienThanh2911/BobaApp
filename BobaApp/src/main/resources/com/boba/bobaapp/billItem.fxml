@@ -4,32 +4,37 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="child" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.BillItemController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="135.0" text="Label">
-         <font>
-            <Font name="Ebrima Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="89.0" text="110.000VND">
-         <font>
-            <Font name="Ebrima Bold" size="14.0" />
-         </font>
-      </Label>
-      <JFXButton prefHeight="32.0" prefWidth="32.0" styleClass="P-btn" stylesheets="@../values/style.css" text="-" />
-      <TextField alignment="CENTER" prefHeight="30.0" prefWidth="28.0">
-         <font>
-            <Font name="Ebrima" size="12.0" />
-         </font>
-      </TextField>
-      <JFXButton alignment="CENTER" prefHeight="32.0" prefWidth="32.0" styleClass="P-btn" stylesheets="@../values/style.css" text="+">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton prefHeight="32.0" prefWidth="32.0" styleClass="P-delete" stylesheets="@../values/style.css" text="X" />
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="330.0">
+         <children>
+            <Label fx:id="name" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="138.0" text="Label">
+               <font>
+                  <Font name="Ebrima Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="price" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="89.0" text="110.000VND">
+               <font>
+                  <Font name="Ebrima Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnTru" prefHeight="32.0" prefWidth="25.0" styleClass="P-btn" stylesheets="@../values/style.css" text="-" />
+            <TextField fx:id="amount" alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
+               <font>
+                  <Font name="Ebrima" size="12.0" />
+               </font>
+            </TextField>
+            <JFXButton fx:id="btnCong" alignment="CENTER" prefHeight="32.0" prefWidth="25.0" styleClass="P-btn" stylesheets="@../values/style.css" text="+">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnXoa" prefHeight="32.0" prefWidth="25.0" styleClass="P-delete" stylesheets="@../values/style.css" text="X" />
+         </children>
+      </HBox>
    </children>
-</HBox>
+</AnchorPane>

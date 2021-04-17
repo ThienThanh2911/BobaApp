@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="65.0" prefWidth="747.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+   <children>
+      <HBox alignment="CENTER" prefHeight="67.0" prefWidth="840.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="227.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="128.0" text="BOBA" textFill="#878787">
+                     <font>
+                        <Font name="Cambria Bold" size="40.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="49.0" prefWidth="89.0" text="Shop" textFill="#878787">
+                     <font>
+                        <Font name="Cambria" size="40.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Pane prefHeight="65.0" prefWidth="530.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" layoutX="40.0" layoutY="14.0" prefHeight="38.0" prefWidth="380.0" stylesheets="@../values/style.css">
+                     <children>
+                        <TextField prefHeight="33.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/style.css">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="126.0" styleClass="search-button" stylesheets="@../../../../java/com/boba/values/style.css" text="Search" textFill="WHITE" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </HBox>
+                  <ImageView fitHeight="65.0" fitWidth="70.0" layoutX="528.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/user.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -33,6 +33,7 @@
 .add-btn{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 100;
+    -fx-margin-top: 20px;
 }
 
 .free-delivery-card{

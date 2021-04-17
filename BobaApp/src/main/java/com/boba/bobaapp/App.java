@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.stage.StageStyle;
 
 /**
@@ -17,7 +19,7 @@ public class App extends Application {
     private static Scene scene;
     
     public static Stage stage = null;
-
+    public static List<ArrayList> cart = new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("loginUI"));
@@ -38,6 +40,20 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    /**
+     * @return the cart
+     */
+    public static List<ArrayList> getCart() {
+        return cart;
+    }
+
+    /**
+     * @param aCart the cart to set
+     */
+    public static void setCart(List<ArrayList> aCart) {
+        cart = aCart;
     }
 
 }
