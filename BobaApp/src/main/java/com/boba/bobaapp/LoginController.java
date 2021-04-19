@@ -83,11 +83,10 @@ public class LoginController implements Initializable {
                 UserService s = new UserService(conn); 
                 User u = s.checkUser(username, password);
                 if(u != null && u.getRole().equals("ADMIN")){
-                    System.out.println(u.getRole());
                     try {
                         Stage old = (Stage)this.btnLogin.getScene().getWindow();
                         old.close();
-                        Parent root1= FXMLLoader.load(getClass().getResource("main.fxml"));
+                        Parent root1= FXMLLoader.load(getClass().getResource("customer.fxml"));
                         Stage stage = new Stage();
                         stage.initModality(Modality.APPLICATION_MODAL);
                         stage.setMaximized(true);

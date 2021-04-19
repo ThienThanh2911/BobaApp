@@ -45,6 +45,9 @@ public class CustomerController implements Initializable{
     private ScrollPane scroll;
     
     @FXML
+    private VBox vbox;
+    
+    @FXML
     private GridPane grid, gridBill;
     
     private List<Product> products = new ArrayList<>();
@@ -99,6 +102,19 @@ public class CustomerController implements Initializable{
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        FXMLLoader fxmlLoadera = new FXMLLoader();
+        fxmlLoadera.setLocation(getClass().getResource("menuAdmin.fxml"));
+        AnchorPane anchorPanee;
+        try {
+            anchorPanee = fxmlLoadera.load();
+            MenuAdminController menuAdmin = fxmlLoadera.getController();
+            vbox.getChildren().remove(2);
+            vbox.getChildren().add(2, anchorPanee);
+        } catch (IOException ex) {
+            Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
         Connection conn;
         try {
             conn = JdbcUtils.getConn();

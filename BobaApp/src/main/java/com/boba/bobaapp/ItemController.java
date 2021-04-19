@@ -1,7 +1,6 @@
 package com.boba.bobaapp;
 
 import com.boba.pojo.Product;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

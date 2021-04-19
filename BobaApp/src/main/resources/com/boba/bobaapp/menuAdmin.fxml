@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="59.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="77.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.MenuAdminController">
    <children>
-      <HBox prefHeight="59.0" prefWidth="744.0">
+      <HBox prefHeight="67.0" prefWidth="744.0">
          <children>
-            <Pane prefHeight="59.0" prefWidth="744.0">
+            <Pane prefHeight="100.0" prefWidth="744.0">
                <children>
-                  <Separator layoutX="-3.0" layoutY="2.0" orientation="VERTICAL" prefHeight="60.0" prefWidth="0.0" />
+                  <Separator layoutY="2.0" orientation="VERTICAL" prefHeight="60.0" prefWidth="0.0" />
                   <JFXButton layoutY="3.0" prefHeight="65.0" prefWidth="140.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="User Manager" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Ebrima" size="14.0" />

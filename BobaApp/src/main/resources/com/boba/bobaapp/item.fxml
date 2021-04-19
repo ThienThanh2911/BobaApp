@@ -40,11 +40,11 @@
          </children>
       </VBox>
    </children>
-   <styleClass>
-      <String fx:value="fruit-item" />
-      <String fx:value="shadow" />
-   </styleClass>
    <cursor>
       <Cursor fx:constant="HAND" />
    </cursor>
+   <styleClass>
+      <String fx:value="p-item" />
+      <String fx:value="shadow" />
+   </styleClass>
 </AnchorPane>

@@ -1,67 +1,67 @@
-.search-box{
+.search-box {
     -fx-background-color:#FFFFFF;
     -fx-background-radius: 100;
 }
 
-.transparent{
+.transparent {
     -fx-background-color: transparent;
 }
 
-.search-button{
+.search-button {
     -fx-background-color: #828282;
     -fx-background-radius: 30;
 }
 
-.right-bar{
+.right-bar {
     -fx-background-color: #D3D3D3;
 }
 
-.shadow{
+.shadow {
     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
 }
 
-.chosen-fruit-card{
+.chosen-p-card {
     -fx-background-color: #F16C31;
     -fx-background-radius: 30;
 }
 
-.comboBox{
+.comboBox {
     -fx-background-color: rgba(255,255,255,0.3);
     -fx-background-radius: 30;
 }
 
-.add-btn{
+.add-btn {
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 100;
     -fx-margin-top: 20px;
 }
 
-.free-delivery-card{
+.free-delivery-card {
     -fx-background-color: #D3D3D3;
     -fx-background-radius: 30;
 }
 
-.shopping-online-card{
+.shopping-online-card {
     -fx-background-color: #BAEAC3;
-    -fx-background-radius: 30;
+    -fx-background-radius:30;
 }
 
-.fruit-item{
+.p-item {
     -fx-background-color: #FFFFFF;
-        -fx-background-radius: 30;
+    -fx-background-radius: 30;
 }
 
 .scroll-pane > .viewport {
    -fx-background-color: transparent;
 }
 
-.P-btn{
+.P-btn {
     -fx-background-color: #828282;
     -fx-text-fill: #FFF;
     -fx-background-radius: 10px;
 }
 
-.p-btn:hover{
+.p-btn:hover {
     -fx-background-color: transparent;
     -fx-background-radius: 10px;
     -fx-text-fill: #333333;
@@ -71,13 +71,13 @@
     -fx-border-radius: 10px;
 }
 
-.P-delete{
+.P-delete {
     -fx-background-color: red;
     -fx-text-fill: #FFF;
     -fx-background-radius: 10px;
 }
 
-.p-delete:hover{
+.p-delete:hover {
     -fx-background-color: transparent;
     -fx-background-radius: 10px;
     -fx-text-fill: #333333;
@@ -119,4 +119,8 @@
 .btn-Remove {
     -fx-background-color: red;
     -fx-text-fill: white;
+}
+
+.f-info {
+    -fx-fill: #828282;
 }
