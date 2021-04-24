@@ -3,29 +3,32 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+<AnchorPane id="AnchorPane" prefHeight="83.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.EmployeeItemController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" text="Full name" />
       <TextField fx:id="eName" editable="false" layoutX="14.0" layoutY="40.0" prefHeight="25.0" prefWidth="110.0" />
-      <Label layoutX="134.0" layoutY="14.0" text="Email" />
-      <TextField fx:id="eEmail" editable="false" layoutX="134.0" layoutY="40.0" prefHeight="25.0" prefWidth="110.0" />
-      <Label layoutX="254.0" layoutY="14.0" text="Phone" />
-      <TextField fx:id="ePhone" editable="false" layoutX="254.0" layoutY="40.0" prefHeight="25.0" prefWidth="85.0" />
-      <Label layoutX="349.0" layoutY="14.0" text="Address" />
-      <TextField fx:id="eAddress" editable="false" layoutX="349.0" layoutY="40.0" prefHeight="25.0" prefWidth="165.0" />
-      <FontAwesomeIconView fill="#828282" glyphName="INFO" layoutX="541.0" layoutY="48.0" size="24" wrappingWidth="6.285714149475098">
+      <Label layoutX="275.0" layoutY="14.0" text="Email" />
+      <TextField fx:id="eEmail" editable="false" layoutX="275.0" layoutY="40.0" prefHeight="25.0" prefWidth="152.0" />
+      <Label layoutX="441.0" layoutY="14.0" text="Phone" />
+      <TextField fx:id="ePhone" editable="false" layoutX="441.0" layoutY="40.0" prefHeight="25.0" prefWidth="85.0" />
+      <Label layoutX="541.0" layoutY="14.0" text="Address" />
+      <TextField fx:id="eAddress" editable="false" layoutX="541.0" layoutY="40.0" prefHeight="25.0" prefWidth="165.0" />
+      <FontAwesomeIconView fx:id="info" fill="#828282" glyphName="INFO" layoutX="728.0" layoutY="61.0" size="24" wrappingWidth="6.285714149475098">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </FontAwesomeIconView>
-      <FontAwesomeIconView fill="RED" glyphName="TRASH" layoutX="567.0" layoutY="48.0" selectionFill="#e60f0f" size="24">
+      <FontAwesomeIconView fx:id="delete" fill="RED" glyphName="TRASH" layoutX="748.0" layoutY="60.5" selectionFill="#e60f0f" size="24">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </FontAwesomeIconView>
+      <Label layoutX="135.0" layoutY="14.0" text="Username" />
+      <TextField fx:id="eUsername" editable="false" layoutX="135.0" layoutY="40.0" prefHeight="25.0" prefWidth="126.0" />
+      <Separator layoutX="8.0" layoutY="80.0" prefHeight="10.0" prefWidth="765.0" />
    </children>
 </AnchorPane>

@@ -5,8 +5,10 @@
  */
 package com.boba.bobaapp;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -15,13 +17,26 @@ import javafx.fxml.Initializable;
  * @author ADMIN
  */
 public class MenuAdminController implements Initializable {
-
+    @FXML
+    private JFXButton userManager, proManager, payHistory, ruleChange, report;
     /**
      * Initializes the controller class.
      */
+    @FXML
+    private CustomerController cus;
+    public void getParent(CustomerController controller) {
+        this.cus = controller;
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        this.userManager.setOnAction(e -> {
+            this.cus.loadUser();
+        });
+        
+        this.proManager.setOnAction(e -> {
+            this.cus.loadProduct();
+        });
     }    
     
 }

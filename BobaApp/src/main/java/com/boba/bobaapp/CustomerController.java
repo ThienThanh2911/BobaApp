@@ -6,8 +6,11 @@
 package com.boba.bobaapp;
 
 import com.boba.pojo.Product;
+import com.boba.pojo.User;
 import com.boba.service.JdbcUtils;
 import com.boba.service.ProductService;
+import com.boba.service.UserService;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,14 +35,17 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Parent;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
 public class CustomerController implements Initializable{
     @FXML
     private Label totalProduct;
     
     @FXML
-    private Label totalPrice;
+    private Label totalPrice, discountPrice;
     
     @FXML
     private ScrollPane scroll;
@@ -48,13 +54,22 @@ public class CustomerController implements Initializable{
     private VBox vbox;
     
     @FXML
+    private TextField discount;
+    
+    @FXML
+    private HBox titleMenu;
+    
+    @FXML
+    private JFXButton addToCart;
+    
+    @FXML
     private GridPane grid, gridBill;
     
     private List<Product> products = new ArrayList<>();
     private Image image;
     private MyListener myListener;
 
-    
+    private int totalPro = 0, totalPri = 0, dis = 0;
     /*private void setChosenProduct(Product product) {
         fruitNameLable.setText(product.getName());
         fruitPriceLabel.setText(product.getPrice().toString());
@@ -69,8 +84,8 @@ public class CustomerController implements Initializable{
     }
     public void loadBill(){
         gridBill.getChildren().clear();
+        totalPro = 0; totalPri = 0;
         try {
-            int totalPro = 0, totalPri = 0;
             for (int i = 0; i < App.cart.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("billItem.fxml"));
@@ -95,26 +110,111 @@ public class CustomerController implements Initializable{
                 gridBill.setMaxHeight(Region.USE_PREF_SIZE);
             }
             totalProduct.setText(String.valueOf(totalPro));
-            totalPrice.setText(String.valueOf(totalPri) + "VNĐ");
+            totalPrice.setText(String.valueOf(totalPri - totalPri*dis/100) + " VNĐ");
+            discountPrice.setText(String.valueOf(dis)+"% (-"+String.valueOf(totalPri*dis/100)+" VNĐ)");
         } catch (IOException e) {
                 e.printStackTrace();
         }
     }
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader fxmlLoadera = new FXMLLoader();
-        fxmlLoadera.setLocation(getClass().getResource("menuAdmin.fxml"));
-        AnchorPane anchorPanee;
+    
+    public void loadUser(){
+        grid.getChildren().clear();
+        Connection conn;
         try {
-            anchorPanee = fxmlLoadera.load();
-            MenuAdminController menuAdmin = fxmlLoadera.getController();
-            vbox.getChildren().remove(2);
-            vbox.getChildren().add(2, anchorPanee);
-        } catch (IOException ex) {
-            Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            conn = JdbcUtils.getConn();
+            UserService s = new UserService(conn); 
+            List<User> users = s.getUsers("");
+            FXMLLoader fxmlLoader1 = new FXMLLoader();
+            fxmlLoader1.setLocation(getClass().getResource("employeeManager.fxml"));
+            AnchorPane anchorPane1 = fxmlLoader1.load();
 
-        
+            EmployeeManagerController employeeManagerController = fxmlLoader1.getController();
+                
+                
+            employeeManagerController.getParent(this);
+            if(vbox.getChildren().size() == 5)
+                vbox.getChildren().remove(3);
+            vbox.getChildren().add(3, anchorPane1);
+            for (int i = 0; i < users.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("employeeItem.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                EmployeeItemController employeeItemController = fxmlLoader.getController();
+                employeeItemController.setData(users.get(i));
+                
+                
+                employeeItemController.getManager(employeeManagerController);
+                employeeItemController.getParent(this);
+                grid.add(anchorPane, 0, i+1); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+        public void loadProduct(){
+        grid.getChildren().clear();
+        Connection conn;
+        try {
+            conn = JdbcUtils.getConn();
+            ProductService s = new ProductService(conn); 
+            List<Product> products = s.getProducts("");
+            FXMLLoader fxmlLoader1 = new FXMLLoader();
+            fxmlLoader1.setLocation(getClass().getResource("productManager.fxml"));
+            AnchorPane anchorPane1 = fxmlLoader1.load();
+
+            ProductManagerController productManagerController = fxmlLoader1.getController();
+                
+                
+            productManagerController.getParent(this);
+            if(vbox.getChildren().size() == 5)
+                vbox.getChildren().remove(3);
+            vbox.getChildren().add(3, anchorPane1);
+            for (int i = 0; i < products.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("productItem.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ProductItemController productItemController = fxmlLoader.getController();
+                productItemController.setData(products.get(i));
+                
+                
+                productItemController.getManager(productManagerController);
+                productItemController.getParent(this);
+                grid.add(anchorPane, 0, i+1); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void loadChooseProducts(){
+        grid.getChildren().clear();
         Connection conn;
         try {
             conn = JdbcUtils.getConn();
@@ -181,12 +281,52 @@ public class CustomerController implements Initializable{
 
                 GridPane.setMargin(anchorPane, new Insets(10));
                 }
+            conn.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } catch (SQLException ex) {
             Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+        
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        discount.setOnKeyTyped(e->{
+            if(discount.getText().equals("ThienTuu")){
+                dis = 20;
+                loadBill();
+            }else{
+                dis = 0;
+                loadBill();
+            } 
+        });
+        addToCart.setOnAction(e->{
+            
+        });
+        titleMenu.setOnMouseClicked(e->{
+            if(vbox.getChildren().size() == 5)
+                vbox.getChildren().remove(3);
+            products.removeAll(products);
+            loadChooseProducts();
+        });
+        if(App.role.equals("ADMIN")){
+            FXMLLoader fxmlLoadera = new FXMLLoader();
+            fxmlLoadera.setLocation(getClass().getResource("menuAdmin.fxml"));
+            AnchorPane anchorPanee;
+            try {
+                anchorPanee = fxmlLoadera.load();
+                MenuAdminController menuAdmin = fxmlLoadera.getController();                
+                
+                menuAdmin.getParent(this);
+                vbox.getChildren().remove(2);
+                vbox.getChildren().add(2, anchorPanee);
+            } catch (IOException ex) {
+                Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        loadChooseProducts();
+
     }
 
 }

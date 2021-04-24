@@ -9,6 +9,7 @@ import com.boba.pojo.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -26,9 +27,32 @@ public class UserService {
     public UserService(Connection conn) {
         this.conn = conn;
     }
+
+        public List<User> getUsers(String kw) throws SQLException {
+        if (kw == null)
+            throw new SQLDataException("error");
+        
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM user");
   
+        List<User> users = new ArrayList<>();
+        while (rs.next()) {
+            User u = new User();
+            u.setId(rs.getInt("id"));
+            u.setFullname(rs.getString("full_name"));
+            u.setEmail(rs.getString("email"));
+            u.setUsername(rs.getString("username"));
+            u.setPassword(rs.getString("password"));
+            u.setAddress(rs.getString("address"));
+            u.setPhone(rs.getString("phone"));
+            u.setRole(rs.getString("user_role"));
+            users.add(u);
+        }
+        
+        return users;
+    }
+    
     public boolean getUser(String user) throws SQLException {
-        try (Connection conn = JdbcUtils.getConn()) {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM user WHERE username = '"+user+"'");
             boolean have = false;
@@ -36,11 +60,9 @@ public class UserService {
                 have = true;
             }
             return have;
-        }
     }
     
     public User checkUser(String user, String password) throws SQLException {
-        try (Connection conn = JdbcUtils.getConn()) {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM user WHERE username = '"+user+"' AND password = '"+password+"'");
             User u = new User();
@@ -51,13 +73,40 @@ public class UserService {
                 u.setEmail(rs.getString("email"));
                 u.setUsername(rs.getString("username"));
                 u.setPassword(rs.getString("password"));
+                u.setAddress(rs.getString("address"));
+                u.setPhone(rs.getString("phone"));
                 u.setRole(rs.getString("user_role"));
                 have = true;
             }
             if(have)
                 return u;
-        }
         return null;
+    }
+    
+    public boolean removeUser(User u) {
+        try {
+            Statement stm = conn.createStatement();
+            int rows = stm.executeUpdate("DELETE FROM user WHERE username ='"+u.getUsername()+"'");
+            
+            return rows > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }
+    
+    public boolean updateUser(User u) {
+        try {
+            Statement stm = conn.createStatement();
+            int rows = stm.executeUpdate("UPDATE user SET full_name = '"+u.getFullname()+"', email = '"+u.getEmail()+"', username = '"+u.getUsername()+"', address = '"+u.getAddress()+"', phone = '"+u.getPhone()+"', user_role = '"+u.getRole()+"' WHERE username ='"+u.getUsername()+"'");
+            
+            return rows > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
     
     public boolean addUser(User u) {

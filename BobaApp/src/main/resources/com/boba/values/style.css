@@ -3,6 +3,11 @@
     -fx-background-radius: 100;
 }
 
+.list-item {
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius: 30;
+}
+
 .transparent {
     -fx-background-color: transparent;
 }
@@ -13,7 +18,7 @@
 }
 
 .right-bar {
-    -fx-background-color: #D3D3D3;
+    -fx-background-color: linear-gradient(to bottom, #16BFFD, #CB3066);
 }
 
 .shadow {
@@ -21,7 +26,7 @@
 }
 
 .chosen-p-card {
-    -fx-background-color: #F16C31;
+    -fx-background-color: #ff7675;
     -fx-background-radius: 30;
 }
 
@@ -113,14 +118,40 @@
 /* CSS Manager Form */
 
 .btn-Add {
-    -fx-background-color: #33FF33;
+    -fx-background-color: #00b894;
+    -fx-text-fill: #2d3436;
 }
 
 .btn-Remove {
-    -fx-background-color: red;
-    -fx-text-fill: white;
+    -fx-background-color: #d63031;
+    -fx-text-fill: #dfe6e9;
 }
 
 .f-info {
     -fx-fill: #828282;
+}
+
+.dis-text {
+    -fx-text-fill: white;
+}
+
+.dis-area {
+  -fx-border-style: solid;
+  -fx-border-color: transparent transparent white transparent;
+  -fx-border-width: 2;
+}
+
+.info-text {
+    -fx-text-fill: white;
+}
+
+.info-area {
+  -fx-border-style: solid;
+  -fx-border-color: transparent transparent white transparent;
+  -fx-border-width: 2;
+}
+
+.total-income {
+    -fx-background-color: linear-gradient(to top, #0984e3, #74b9ff);
+    -fx-background-radius:30;
 }

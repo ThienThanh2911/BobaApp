@@ -28,8 +28,8 @@ public class BillItemController implements Initializable{
     @FXML private Button btnCong, btnTru, btnXoa;
     @FXML private TextField amount;
     @FXML private AnchorPane child;
-     @FXML
- private CustomerController cus;
+    @FXML
+    private CustomerController cus;
     /**
      * Initializes the controller class.
      * @param item

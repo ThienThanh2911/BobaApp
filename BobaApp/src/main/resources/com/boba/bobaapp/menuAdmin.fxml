@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,8 +15,7 @@
          <children>
             <Pane prefHeight="100.0" prefWidth="744.0">
                <children>
-                  <Separator layoutY="2.0" orientation="VERTICAL" prefHeight="60.0" prefWidth="0.0" />
-                  <JFXButton layoutY="3.0" prefHeight="65.0" prefWidth="140.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="User Manager" textAlignment="CENTER" wrapText="true">
+                  <JFXButton fx:id="userManager" layoutY="3.0" prefHeight="65.0" prefWidth="140.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="User Manager" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Ebrima" size="14.0" />
                      </font>
@@ -24,7 +24,7 @@
                      </cursor>
                   </JFXButton>
                   <Separator layoutX="140.0" layoutY="2.0" orientation="VERTICAL" prefHeight="60.0" prefWidth="0.0" />
-                  <JFXButton layoutX="140.0" layoutY="3.0" prefHeight="65.0" prefWidth="130.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Product Manager" textAlignment="CENTER" wrapText="true">
+                  <JFXButton fx:id="proManager" layoutX="140.0" layoutY="3.0" prefHeight="65.0" prefWidth="130.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Product Manager" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Ebrima" size="14.0" />
                      </font>
@@ -33,7 +33,7 @@
                      </cursor>
                   </JFXButton>
                   <Separator layoutX="380.0" layoutY="2.0" orientation="VERTICAL" prefHeight="60.0" prefWidth="0.0" />
-                  <JFXButton layoutX="271.0" layoutY="3.0" prefHeight="65.0" prefWidth="110.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Payment History" textAlignment="CENTER" wrapText="true">
+                  <JFXButton fx:id="payHistory" layoutX="271.0" layoutY="3.0" prefHeight="65.0" prefWidth="110.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Payment History" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Ebrima" size="14.0" />
                      </font>
@@ -42,7 +42,7 @@
                      </cursor>
                   </JFXButton>
                   <Separator layoutX="269.0" layoutY="2.0" orientation="VERTICAL" prefHeight="60.0" prefWidth="0.0" />
-                  <JFXButton layoutX="380.0" layoutY="3.0" prefHeight="65.0" prefWidth="120.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Rule Change" textAlignment="CENTER" wrapText="true">
+                  <JFXButton fx:id="ruleChange" layoutX="380.0" layoutY="3.0" prefHeight="65.0" prefWidth="120.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Rule Change" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Ebrima" size="14.0" />
                      </font>
@@ -51,13 +51,16 @@
                      </cursor>
                   </JFXButton>
                   <Separator layoutX="500.0" layoutY="2.0" orientation="VERTICAL" prefHeight="60.0" prefWidth="0.0" />
-                  <JFXButton layoutX="500.0" layoutY="3.0" prefHeight="65.0" prefWidth="120.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Report" textAlignment="CENTER" wrapText="true">
+                  <JFXButton fx:id="report" layoutX="500.0" layoutY="3.0" prefHeight="65.0" prefWidth="120.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Chart" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Ebrima" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="BAR_CHART_ALT" />
+                     </graphic>
                   </JFXButton>
                </children>
             </Pane>

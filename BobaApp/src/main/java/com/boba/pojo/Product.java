@@ -12,12 +12,16 @@ import java.math.BigDecimal;
  * @author Admin
  */
 public class Product {
+
     private int id;
     private String image;
     private String name;
     private BigDecimal price;
     private int categoryId;
-    private String color;
+    private String description;
+    private String createdDate;
+    private String createdBy;
+    private boolean active;
 
     /**
      * @return the id
@@ -90,16 +94,59 @@ public class Product {
     }
 
     /**
-     * @return the color
+     * @return the description
      */
-    public String getColor() {
-        return color;
+    public String getDescription() {
+        return description;
     }
 
     /**
-     * @param color the color to set
+     * @param description the description to set
      */
-    public void setColor(String color) {
-        this.color = color;
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+    /**
+     * @return the createdDate
+     */
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    /**
+     * @param createdDate the createdDate to set
+     */
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    /**
+     * @return the createdBy
+     */
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    /**
+     * @param createdBy the createdBy to set
+     */
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    /**
+     * @return the active
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+    /**
+     * @param active the active to set
+     */
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
 }

@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
 
 /**
@@ -20,12 +21,14 @@ public class App extends Application {
     
     public static Stage stage = null;
     public static List<ArrayList> cart = new ArrayList<>();
+    public static String role = null;
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("loginUI"));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         this.stage = stage;
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("/images/Icon.ico")));
         stage.show();
     }
 

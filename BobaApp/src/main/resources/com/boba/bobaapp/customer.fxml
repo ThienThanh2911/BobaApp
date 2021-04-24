@@ -6,7 +6,6 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -29,7 +28,7 @@
             <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" BorderPane.alignment="CENTER">
                <children>
                   <Pane prefHeight="50.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="710.0" prefWidth="335.0" stylesheets="@../values/style.css">
+                  <VBox alignment="CENTER" prefHeight="710.0" prefWidth="335.0" stylesheets="@../values/style.css">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
@@ -55,26 +54,12 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="26.0" prefWidth="333.0">
                            <children>
-                              <Label prefHeight="53.0" prefWidth="167.0" text="Total Products" textFill="WHITE">
+                              <Label prefHeight="30.0" prefWidth="154.0" text="Total Products" textFill="WHITE">
                                  <font>
                                     <Font name="Cambria" size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="totalProduct" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="137.0" text="0" textFill="WHITE">
-                                 <font>
-                                    <Font name="Cambria" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="26.0" prefWidth="331.0">
-                           <children>
-                              <Label prefHeight="30.0" prefWidth="161.0" text="Total Price" textFill="WHITE">
-                                 <font>
-                                    <Font name="Cambria" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="totalPrice" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="137.0" text="0 VNĐ" textFill="WHITE">
+                              <Label fx:id="totalProduct" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="153.0" text="0" textFill="WHITE">
                                  <font>
                                     <Font name="Cambria" size="24.0" />
                                  </font>
@@ -83,16 +68,50 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="26.0" prefWidth="331.0">
                            <children>
-                              <Label prefHeight="53.0" prefWidth="167.0" text="Select a table" textFill="WHITE">
+                              <Label prefHeight="30.0" prefWidth="117.0" text="Total Price" textFill="WHITE">
                                  <font>
                                     <Font name="Cambria" size="24.0" />
                                  </font>
                               </Label>
-                              <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="selected" styleClass="comboBox" stylesheets="@../values/style.css" />
+                              <Label fx:id="totalPrice" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="191.0" text="0 VNĐ" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="26.0" prefWidth="331.0">
+                           <children>
+                              <Label prefHeight="30.0" prefWidth="96.0" text="Discount" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="discountPrice" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="211.0" text="0%(-0 VNĐ)" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="40.0" prefWidth="335.0">
+                           <children>
+                              <Pane prefHeight="40.0" prefWidth="35.0" HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="discount" alignment="CENTER" prefHeight="40.0" prefWidth="261.0" promptText="Discount Code" stylesheets="@../values/style.css">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="transparent" />
+                                    <String fx:value="dis-area" />
+                                    <String fx:value="dis-text" />
+                                 </styleClass>
+                              </TextField>
+                              <Pane prefHeight="40.0" prefWidth="35.0" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                         <Pane prefHeight="37.0" prefWidth="335.0" />
-                        <JFXButton mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="ADD TO CARD" textFill="#828282">
+                        <JFXButton fx:id="addToCart" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="ADD TO CARD" textFill="#828282">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -132,7 +151,7 @@
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
                      <children>
-                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="227.0">
+                        <HBox fx:id="titleMenu" alignment="CENTER" prefHeight="65.0" prefWidth="227.0">
                            <children>
                               <Label prefHeight="46.0" prefWidth="128.0" text="BOBA" textFill="#878787">
                                  <font>
@@ -145,6 +164,9 @@
                                  </font>
                               </Label>
                            </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </HBox>
                         <Pane prefHeight="65.0" prefWidth="530.0" HBox.hgrow="ALWAYS">
                            <children>
@@ -158,18 +180,21 @@
                                           <Font name="Cambria" size="18.0" />
                                        </font>
                                     </TextField>
-                                    <JFXButton prefHeight="40.0" prefWidth="126.0" styleClass="search-button" stylesheets="@../values/style.css" text="Search" textFill="WHITE" />
+                                    <JFXButton prefHeight="40.0" prefWidth="126.0" styleClass="search-button" stylesheets="@../values/style.css" text="Search" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></JFXButton>
                                  </children>
                                  <styleClass>
                                     <String fx:value="search-box" />
                                     <String fx:value="shadow" />
                                  </styleClass>
                               </HBox>
-                              <ImageView fitHeight="65.0" fitWidth="70.0" layoutX="528.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../images/user.png" />
-                                 </image>
-                              </ImageView>
+                              <FontAwesomeIconView fill="#828282" glyphName="SIGN_OUT" layoutX="563.0" layoutY="46.0" size="35" wrappingWidth="35.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </FontAwesomeIconView>
                            </children></Pane>
                      </children>
                   </HBox>
@@ -228,9 +253,9 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Pane prefHeight="587.0" prefWidth="880.0" styleClass="search-box" stylesheets="@../values/style.css" HBox.hgrow="ALWAYS">
+                        <Pane prefHeight="587.0" prefWidth="880.0" styleClass="list-item" stylesheets="@../values/style.css" HBox.hgrow="ALWAYS">
                            <children>
-                              <ScrollPane fx:id="scroll" layoutX="37.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="805.0" styleClass="search-box" stylesheets="@../values/style.css">
+                              <ScrollPane fx:id="scroll" layoutX="37.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="805.0" styleClass="search-box" stylesheets="@../values/style.css">
                                  <content>
                                     <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                                        <rowConstraints>

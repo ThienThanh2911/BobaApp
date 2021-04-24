@@ -2,31 +2,39 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="100.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.EmployeeManagerController">
    <children>
       <Text layoutX="16.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full name" />
       <Text layoutX="16.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <TextField layoutX="95.0" layoutY="14.0" prefHeight="25.0" prefWidth="130.0" />
-      <TextField layoutX="95.0" layoutY="56.0" prefHeight="25.0" prefWidth="130.0" />
-      <Text layoutX="236.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-      <Text layoutX="236.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" />
-      <TextField layoutX="298.0" layoutY="14.0" prefHeight="25.0" prefWidth="111.0" />
-      <TextField layoutX="298.0" layoutY="56.0" prefHeight="25.0" prefWidth="111.0" />
-      <Text layoutX="427.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-      <Text layoutX="427.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confrim Pasword" />
-      <Text layoutX="661.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
-      <Text layoutX="661.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Role" />
-      <TextField layoutX="728.0" layoutY="14.0" prefHeight="25.0" prefWidth="130.0" />
-      <JFXComboBox layoutX="728.0" layoutY="54.0" prefHeight="25.0" prefWidth="130.0" />
-      <JFXButton layoutX="885.0" layoutY="11.0" prefHeight="32.0" prefWidth="50.0" styleClass="btn-Add" stylesheets="@../values/style.css" text="Add" />
-      <JFXButton layoutX="885.0" layoutY="54.0" prefHeight="32.0" prefWidth="111.0" styleClass="btn-Remove" stylesheets="@../values/style.css" text="Remove" />
-      <JFXButton layoutX="935.0" layoutY="11.0" prefHeight="32.0" prefWidth="60.0" styleClass="btn-Add" stylesheets="@../values/style.css" text="Update" />
-      <PasswordField layoutX="523.0" layoutY="14.0" prefHeight="25.0" prefWidth="130.0" />
-      <PasswordField layoutX="523.0" layoutY="56.0" prefHeight="25.0" prefWidth="130.0" />
+      <TextField fx:id="fullname" layoutX="95.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="email" layoutX="95.0" layoutY="56.0" prefHeight="25.0" prefWidth="200.0" />
+      <Text layoutX="314.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+      <Text layoutX="607.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" />
+      <TextField fx:id="username" layoutX="389.0" layoutY="15.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="phone" layoutX="668.0" layoutY="15.0" prefHeight="25.0" prefWidth="140.0" />
+      <Text layoutX="314.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
+      <Text layoutX="605.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Role" />
+      <TextField fx:id="address" layoutX="389.0" layoutY="55.0" prefHeight="25.0" prefWidth="200.0" />
+      <JFXComboBox fx:id="comboRole" layoutX="668.0" layoutY="55.0" prefHeight="25.0" prefWidth="140.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXComboBox>
+      <JFXButton fx:id="btnAdd" layoutX="90.0" layoutY="104.0" prefHeight="32.0" prefWidth="150.0" styleClass="btn-Add" stylesheets="@../values/style.css" text="Add New">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXButton fx:id="btnReset" layoutX="340.0" layoutY="104.0" prefHeight="32.0" prefWidth="150.0" styleClass="btn-Remove" stylesheets="@../values/style.css" text="Reset">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXButton fx:id="btnUpdate" layoutX="580.0" layoutY="104.0" prefHeight="32.0" prefWidth="150.0" styleClass="btn-Add" stylesheets="@../values/style.css" text="Update">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
    </children>
 </AnchorPane>

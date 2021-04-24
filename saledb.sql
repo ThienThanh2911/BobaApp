@@ -139,14 +139,16 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `full_name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `active` bit(1) DEFAULT b'1',
-  `user_role` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `product` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_by` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description`` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `price` decimal(10,0) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_date` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `active` bit(1) COLLATE utf8_unicode_ci NOT NULL,
+  `category_id` int COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -157,7 +159,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1, 'Thiên Tựu','thientuu2911@gmail.com','thientuu2911','1c22e0f5c09af510a15da64a6499e3df',_binary '','ROLE_ADMIN');
+INSERT INTO `user` VALUES (1, 'Thiên Tựu','thientuu2911@gmail.com','thientuu2911','1c22e0f5c09af510a15da64a6499e3df',,'ADMIN');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

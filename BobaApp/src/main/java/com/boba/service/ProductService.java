@@ -44,6 +44,10 @@ public class ProductService {
             p.setPrice(rs.getBigDecimal("price"));
             p.setImage(rs.getString("image"));
             p.setCategoryId(rs.getInt("category_id"));
+            p.setCreatedBy(rs.getString("created_by"));
+            p.setCreatedDate(rs.getString("created_date"));
+            p.setActive(rs.getBoolean("active"));
+            p.setDescription(rs.getString("description"));
             
             products.add(p);
         }

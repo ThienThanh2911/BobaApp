@@ -12,7 +12,7 @@ public class ItemController {
     private Label nameLabel;
 
     @FXML
-    private Label priceLable;
+    private Label priceLabel;
 
     @FXML
     private ImageView img;
@@ -29,7 +29,7 @@ public class ItemController {
         this.product = product;
         this.myListener = myListener;
         nameLabel.setText(product.getName());
-        priceLable.setText(product.getPrice().toString());
+        priceLabel.setText(product.getPrice().toString());
         Image image = new Image(getClass().getResourceAsStream(product.getImage()));
         img.setImage(image);
     }

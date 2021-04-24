@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.ProductItemController">
+   <children>
+      <Label layoutX="238.0" layoutY="14.0" text="Desciption" />
+      <TextField fx:id="pDes" editable="false" layoutX="238.0" layoutY="40.0" prefHeight="25.0" prefWidth="130.0" />
+      <Label layoutX="378.0" layoutY="14.0" text="Price" />
+      <TextField fx:id="pPrice" editable="false" layoutX="378.0" layoutY="40.0" prefHeight="25.0" prefWidth="100.0" />
+      <Label layoutX="565.0" layoutY="14.0" text="Created date" />
+      <FontAwesomeIconView fx:id="info" fill="#828282" glyphName="INFO" layoutX="729.0" layoutY="60.0" size="24" wrappingWidth="6.285714149475098">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <FontAwesomeIconView fx:id="delete" fill="RED" glyphName="TRASH" layoutX="748.0" layoutY="59.5" selectionFill="#e60f0f" size="24">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <Label layoutX="99.0" layoutY="14.0" text="Product Name" />
+      <TextField fx:id="pName" editable="false" layoutX="99.0" layoutY="40.0" prefHeight="25.0" prefWidth="130.0" />
+      <ImageView fx:id="pImage" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/boba.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <DatePicker fx:id="pCreatedDate" layoutX="565.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="491.0" layoutY="14.0" text="Amount" />
+      <TextField fx:id="pAmount" editable="false" layoutX="491.0" layoutY="40.0" prefHeight="25.0" prefWidth="65.0" />
+      <Separator layoutX="8.0" layoutY="80.0" prefHeight="10.0" prefWidth="765.0" />
+   </children>
+</AnchorPane>

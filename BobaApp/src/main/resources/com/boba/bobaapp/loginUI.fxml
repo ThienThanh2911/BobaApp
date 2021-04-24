@@ -23,7 +23,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
                <image>
-                  <Image url="@../../../images/boba.png" />
+                  <Image url="@../../../images/LOGO.png" />
                </image>
             </ImageView>
             <Label text="BOBA APP MANAGEMENT " textAlignment="CENTER">
