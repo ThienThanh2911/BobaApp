@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
@@ -12,34 +12,28 @@
    <children>
       <Text layoutX="16.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
       <Text layoutX="16.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-      <TextField fx:id="pName" layoutX="95.0" layoutY="14.0" prefHeight="25.0" prefWidth="130.0" />
-      <TextField fx:id="pDes" layoutX="95.0" layoutY="56.0" prefHeight="25.0" prefWidth="130.0" />
+      <TextField fx:id="pName" alignment="CENTER" layoutX="95.0" layoutY="14.0" prefHeight="25.0" prefWidth="130.0" />
+      <TextField fx:id="pDes" alignment="CENTER" layoutX="95.0" layoutY="56.0" prefHeight="25.0" prefWidth="130.0" />
       <Text layoutX="241.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" />
-      <Text layoutX="241.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
-      <TextField fx:id="pPrice" layoutX="298.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" />
-      <TextField fx:id="pAmount" layoutX="298.0" layoutY="54.0" prefHeight="25.0" prefWidth="100.0" />
+      <TextField fx:id="pPrice" alignment="CENTER_RIGHT" layoutX="298.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" />
       <Text layoutX="409.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create by" />
-      <Text layoutX="616.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
-      <Text layoutX="615.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
-      <TextField fx:id="pCreatedBy" layoutX="472.0" layoutY="15.0" prefHeight="25.0" prefWidth="130.0" />
-      <JFXComboBox fx:id="pCategory" layoutX="684.0" layoutY="55.0" prefHeight="25.0" prefWidth="130.0">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></JFXComboBox>
-      <JFXButton fx:id="btnAdd" layoutX="125.0" layoutY="98.0" prefHeight="32.0" prefWidth="130.0" styleClass="btn-Add" stylesheets="@../values/style.css" text="Add New">
+      <Text layoutX="409.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <TextField fx:id="pCreatedBy" alignment="CENTER" layoutX="472.0" layoutY="15.0" prefHeight="25.0" prefWidth="149.0" />
+      <JFXButton fx:id="btnAdd" layoutX="125.0" layoutY="98.0" prefHeight="32.0" prefWidth="130.0" styleClass="btn-Add" stylesheets="@../values/style.css" text="Add">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXButton fx:id="btnRemove" layoutX="333.0" layoutY="98.0" prefHeight="32.0" prefWidth="130.0" styleClass="btn-Remove" stylesheets="@../values/style.css" text="Remove">
+      <JFXButton fx:id="btnReset" layoutX="333.0" layoutY="98.0" prefHeight="32.0" prefWidth="130.0" styleClass="btn-Remove" stylesheets="@../values/style.css" text="Reset">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXButton fx:id="btnImport" layoutX="542.0" layoutY="98.0" prefHeight="32.0" prefWidth="130.0" styleClass="btn-Add" stylesheets="@../values/style.css" text="Import">
+      <JFXButton fx:id="btnUpdate" layoutX="542.0" layoutY="98.0" prefHeight="32.0" prefWidth="130.0" styleClass="btn-Add" stylesheets="@../values/style.css" text="Update">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <DatePicker fx:id="pDate" layoutX="664.0" layoutY="15.0" prefHeight="25.0" prefWidth="149.0" />
-      <Text layoutX="409.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" />
-      <TextField fx:id="pImage" layoutX="472.0" layoutY="55.0" prefHeight="25.0" prefWidth="130.0" />
+      <DatePicker fx:id="pDate" layoutX="472.0" layoutY="56.0" prefHeight="25.0" prefWidth="149.0" />
+      <Text layoutX="239.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" />
+      <TextField fx:id="pImage" alignment="CENTER" layoutX="298.0" layoutY="55.0" prefHeight="25.0" prefWidth="100.0" />
+      <JFXToggleButton fx:id="pActive" layoutX="638.0" layoutY="19.0" prefHeight="58.0" prefWidth="143.0" text="Active" />
    </children>
 </AnchorPane>

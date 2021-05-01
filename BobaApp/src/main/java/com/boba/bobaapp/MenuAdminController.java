@@ -6,8 +6,11 @@
 package com.boba.bobaapp;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -18,7 +21,7 @@ import javafx.fxml.Initializable;
  */
 public class MenuAdminController implements Initializable {
     @FXML
-    private JFXButton userManager, proManager, payHistory, ruleChange, report;
+    private JFXButton userManager, proManager, payHistory, disManager, chart;
     /**
      * Initializes the controller class.
      */
@@ -36,6 +39,18 @@ public class MenuAdminController implements Initializable {
         
         this.proManager.setOnAction(e -> {
             this.cus.loadProduct();
+        });
+        
+        this.payHistory.setOnAction(e -> {
+            this.cus.loadPayment();
+        });
+        
+        this.disManager.setOnAction(e->{
+            this.cus.loadDiscount();
+        });
+        
+        this.chart.setOnAction(e -> {
+            this.cus.loadChart();
         });
     }    
     

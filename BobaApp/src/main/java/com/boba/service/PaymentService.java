@@ -11,8 +11,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,21 +27,31 @@ public class PaymentService {
     public PaymentService(Connection conn) {
         this.conn = conn;
     }
-    
-    public List<Payment> getProducts(String kw) throws SQLException {
-        if (kw == null)
-            throw new SQLDataException("error");
+    public boolean addPayment(Payment p) {
+        try {
+            String sql = "INSERT INTO payment(total_price, created_by, created_date) VALUES(?, ?, ?)";
+            PreparedStatement stm = this.conn.prepareStatement(sql);
+            stm.setBigDecimal(1, p.getTotalPrice());
+            stm.setString(2, p.getCreatedBy());
+            stm.setString(3, p.getCreatedDate());
+            
+            int rows = stm.executeUpdate();
+            
+            return rows > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        String sql = "SELECT * FROM product WHERE name like concat('%', ?, '%') ORDER BY id DESC";
-        PreparedStatement stm = this.getConn().prepareStatement(sql);
-        stm.setString(1, kw);
+        return false;
+    }
+    public List<Payment> getPayments() throws SQLException {
         
-        ResultSet rs = stm.executeQuery();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM payment");
         List<Payment> payments = new ArrayList<>();
         while (rs.next()) {
             Payment p = new Payment();
             p.setId(rs.getInt("id"));
-            p.setCusName(rs.getString("cus_name"));
             p.setTotalPrice(rs.getBigDecimal("total_price"));
             p.setCreatedBy(rs.getString("created_by"));
             p.setCreatedDate(rs.getString("created_date"));

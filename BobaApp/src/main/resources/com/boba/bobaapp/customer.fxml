@@ -172,7 +172,7 @@
                            <children>
                               <HBox alignment="CENTER" layoutX="40.0" layoutY="14.0" prefHeight="38.0" prefWidth="380.0" stylesheets="@../values/style.css">
                                  <children>
-                                    <TextField prefHeight="33.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/style.css">
+                                    <TextField fx:id="txtKeyword" prefHeight="33.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/style.css">
                                        <HBox.margin>
                                           <Insets left="20.0" />
                                        </HBox.margin>
@@ -180,7 +180,7 @@
                                           <Font name="Cambria" size="18.0" />
                                        </font>
                                     </TextField>
-                                    <JFXButton prefHeight="40.0" prefWidth="126.0" styleClass="search-button" stylesheets="@../values/style.css" text="Search" textFill="WHITE">
+                                    <JFXButton fx:id="btnSearch" defaultButton="true" prefHeight="40.0" prefWidth="126.0" styleClass="search-button" stylesheets="@../values/style.css" text="Search" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor></JFXButton>
@@ -190,7 +190,7 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                               </HBox>
-                              <FontAwesomeIconView fill="#828282" glyphName="SIGN_OUT" layoutX="563.0" layoutY="46.0" size="35" wrappingWidth="35.0">
+                              <FontAwesomeIconView fx:id="logOut" fill="#828282" glyphName="SIGN_OUT" layoutX="563.0" layoutY="46.0" size="35" wrappingWidth="35.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -253,9 +253,9 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Pane prefHeight="587.0" prefWidth="880.0" styleClass="list-item" stylesheets="@../values/style.css" HBox.hgrow="ALWAYS">
+                        <Pane prefHeight="550.0" prefWidth="880.0" styleClass="list-item" stylesheets="@../values/style.css" HBox.hgrow="ALWAYS">
                            <children>
-                              <ScrollPane fx:id="scroll" layoutX="37.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="805.0" styleClass="search-box" stylesheets="@../values/style.css">
+                              <ScrollPane fx:id="scroll" layoutX="37.0" layoutY="7.0" prefHeight="550.0" prefWidth="805.0" styleClass="search-box" stylesheets="@../values/style.css">
                                  <content>
                                     <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                                        <rowConstraints>

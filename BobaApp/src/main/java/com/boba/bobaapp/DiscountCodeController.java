@@ -5,9 +5,9 @@
  */
 package com.boba.bobaapp;
 
-import com.boba.pojo.Product;
+import com.boba.pojo.Discount;
+import com.boba.service.DiscountService;
 import com.boba.service.JdbcUtils;
-import com.boba.service.ProductService;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.net.URL;
 import java.sql.Connection;
@@ -21,57 +21,46 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
  *
  * @author ADMIN
  */
-public class ProductItemController implements Initializable {
+public class DiscountCodeController implements Initializable {
 
-    @FXML
-    private TextField pDes;
-    @FXML
-    private TextField pPrice;
     @FXML
     private FontAwesomeIconView info;
     @FXML
     private FontAwesomeIconView delete;
     @FXML
-    private TextField pName;
+    private TextField disCode;
     @FXML
-    private ImageView pImage;
+    private DatePicker disCreatedDate;
     @FXML
-    private DatePicker pCreatedDate;
-    @FXML
-    private TextField pAmount;
-    @FXML
-    private Product product;
-    @FXML
+    private TextField disID;
     private CustomerController cus;
+    private Discount discount;
+    private DiscountManagerController manager;
     @FXML
-    private ProductManagerController manager;
-    
+    private TextField percentDiscount;
+
     public void getParent(CustomerController controller) {
         this.cus = controller;
     }
     
-    public void getManager(ProductManagerController controller) {
+    public void getManager(DiscountManagerController controller) {
         this.manager = controller;
     }
 
-    public void setData(Product product){
-        this.product = product;
-        this.pName.setText(product.getName());
-        this.pPrice.setText(product.getPrice().toString());
-        this.pDes.setText(product.getDescription());
+    public void setData(Discount discount){
+        this.discount = discount;
+        this.disID.setText(String.valueOf(discount.getId()));
+        this.disCode.setText(discount.getDiscountCode());
+        this.percentDiscount.setText(String.valueOf(discount.getPercentDiscount()));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.parse(product.getCreatedDate(), formatter);
-        this.pCreatedDate.setValue(localDate);
-        Image image = new Image(getClass().getResourceAsStream(product.getImage()));
-        pImage.setImage(image);
+        LocalDate localDate = LocalDate.parse(discount.getCreatedDate(), formatter);
+        this.disCreatedDate.setValue(localDate);
     }
     
     /**
@@ -81,15 +70,15 @@ public class ProductItemController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         info.setOnMouseClicked(e->{
-            this.manager.setData(this.product);
+            this.manager.setData(this.discount);
         });
         delete.setOnMouseClicked(e->{
             try{
                 Connection conn = JdbcUtils.getConn();
-                ProductService s = new ProductService(conn);
+                DiscountService s = new DiscountService(conn);
                 
-                s.deleteProduct(product.getId());
-                this.cus.loadProduct();
+                s.deleteDiscount(discount.getId());
+                this.cus.loadDiscount();
                 
                 conn.close();
             } catch (SQLException ex) {

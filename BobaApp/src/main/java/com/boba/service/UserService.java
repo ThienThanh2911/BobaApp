@@ -27,14 +27,40 @@ public class UserService {
     public UserService(Connection conn) {
         this.conn = conn;
     }
-
-        public List<User> getUsers(String kw) throws SQLException {
+    public List<User> getUsers(int kw) throws SQLException {
+        if (kw == 0)
+            throw new SQLDataException("error");
+        
+        String sql = "SELECT * FROM user WHERE id like concat('%', ?, '%') ORDER BY id DESC";
+        PreparedStatement stm = this.getConn().prepareStatement(sql);
+        stm.setInt(1, kw);
+        ResultSet rs = stm.executeQuery();
+        List<User> users = new ArrayList<>();
+        while (rs.next()) {
+            User u = new User();
+            u.setId(rs.getInt("id"));
+            u.setFullname(rs.getString("full_name"));
+            u.setEmail(rs.getString("email"));
+            u.setUsername(rs.getString("username"));
+            u.setPassword(rs.getString("password"));
+            u.setAddress(rs.getString("address"));
+            u.setPhone(rs.getString("phone"));
+            u.setRole(rs.getString("user_role"));
+            users.add(u);
+        }
+        
+        return users;
+    }
+        
+    public List<User> getUsers(String kw) throws SQLException {
         if (kw == null)
             throw new SQLDataException("error");
         
-        Statement stm = conn.createStatement();
-        ResultSet rs = stm.executeQuery("SELECT * FROM user");
-  
+        String sql = "SELECT * FROM user WHERE username like concat('%', ?, '%') ORDER BY id DESC";
+        PreparedStatement stm = this.getConn().prepareStatement(sql);
+        stm.setString(1, kw);
+        
+        ResultSet rs = stm.executeQuery();
         List<User> users = new ArrayList<>();
         while (rs.next()) {
             User u = new User();
@@ -53,13 +79,15 @@ public class UserService {
     }
     
     public boolean getUser(String user) throws SQLException {
-            Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM user WHERE username = '"+user+"'");
-            boolean have = false;
-            while (rs.next()) {
-                have = true;
-            }
-            return have;
+        if (user == null)
+            throw new SQLDataException("error");
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM user WHERE username = '"+user+"'");
+        boolean have = false;
+        while (rs.next()) {
+            have = true;
+        }
+        return have;
     }
     
     public User checkUser(String user, String password) throws SQLException {

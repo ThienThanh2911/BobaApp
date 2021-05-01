@@ -10,12 +10,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.ProductItemController">
+<AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="781.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.ProductItemController">
    <children>
       <Label layoutX="238.0" layoutY="14.0" text="Desciption" />
-      <TextField fx:id="pDes" editable="false" layoutX="238.0" layoutY="40.0" prefHeight="25.0" prefWidth="130.0" />
-      <Label layoutX="378.0" layoutY="14.0" text="Price" />
-      <TextField fx:id="pPrice" editable="false" layoutX="378.0" layoutY="40.0" prefHeight="25.0" prefWidth="100.0" />
+      <TextField fx:id="pDes" disable="true" editable="false" layoutX="238.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" styleClass="text" />
+      <Label layoutX="400.0" layoutY="14.0" text="Price" />
+      <TextField fx:id="pPrice" disable="true" editable="false" layoutX="400.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" styleClass="text" />
       <Label layoutX="565.0" layoutY="14.0" text="Created date" />
       <FontAwesomeIconView fx:id="info" fill="#828282" glyphName="INFO" layoutX="729.0" layoutY="60.0" size="24" wrappingWidth="6.285714149475098">
          <cursor>
@@ -28,7 +28,7 @@
          </cursor>
       </FontAwesomeIconView>
       <Label layoutX="99.0" layoutY="14.0" text="Product Name" />
-      <TextField fx:id="pName" editable="false" layoutX="99.0" layoutY="40.0" prefHeight="25.0" prefWidth="130.0" />
+      <TextField fx:id="pName" disable="true" editable="false" layoutX="99.0" layoutY="40.0" prefHeight="25.0" prefWidth="130.0" styleClass="text" />
       <ImageView fx:id="pImage" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/boba.png" />
@@ -37,9 +37,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <DatePicker fx:id="pCreatedDate" layoutX="565.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="491.0" layoutY="14.0" text="Amount" />
-      <TextField fx:id="pAmount" editable="false" layoutX="491.0" layoutY="40.0" prefHeight="25.0" prefWidth="65.0" />
+      <DatePicker fx:id="pCreatedDate" disable="true" editable="false" layoutX="565.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" styleClass="text" stylesheets="@../values/style.css" />
       <Separator layoutX="8.0" layoutY="80.0" prefHeight="10.0" prefWidth="765.0" />
    </children>
 </AnchorPane>

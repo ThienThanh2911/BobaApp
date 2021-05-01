@@ -42,7 +42,7 @@
                      </cursor>
                   </JFXButton>
                   <Separator layoutX="269.0" layoutY="2.0" orientation="VERTICAL" prefHeight="60.0" prefWidth="0.0" />
-                  <JFXButton fx:id="ruleChange" layoutX="380.0" layoutY="3.0" prefHeight="65.0" prefWidth="120.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Rule Change" textAlignment="CENTER" wrapText="true">
+                  <JFXButton fx:id="disManager" layoutX="380.0" layoutY="3.0" prefHeight="65.0" prefWidth="120.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Discount Manager" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Ebrima" size="14.0" />
                      </font>
@@ -51,7 +51,7 @@
                      </cursor>
                   </JFXButton>
                   <Separator layoutX="500.0" layoutY="2.0" orientation="VERTICAL" prefHeight="60.0" prefWidth="0.0" />
-                  <JFXButton fx:id="report" layoutX="500.0" layoutY="3.0" prefHeight="65.0" prefWidth="120.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Chart" textAlignment="CENTER" wrapText="true">
+                  <JFXButton fx:id="chart" layoutX="500.0" layoutY="3.0" prefHeight="65.0" prefWidth="120.0" styleClass="btn-menu" stylesheets="@../values/style.css" text="Chart" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Ebrima" size="14.0" />
                      </font>

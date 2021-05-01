@@ -13,7 +13,6 @@ import java.math.BigDecimal;
  */
 public class Payment {
     private int id;
-    private String cusName;
     private BigDecimal totalPrice;
     private String createdBy;
     private String createdDate;
@@ -30,20 +29,6 @@ public class Payment {
      */
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * @return the cusName
-     */
-    public String getCusName() {
-        return cusName;
-    }
-
-    /**
-     * @param cusName the cusName to set
-     */
-    public void setCusName(String cusName) {
-        this.cusName = cusName;
     }
 
     /**

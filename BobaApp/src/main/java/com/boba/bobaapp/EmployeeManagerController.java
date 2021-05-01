@@ -15,6 +15,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,6 +53,7 @@ public class EmployeeManagerController implements Initializable {
 
     @FXML
     private CustomerController cus;
+    private int id;
     /**
      * Initializes the controller class.
      * @param item
@@ -80,6 +82,7 @@ public class EmployeeManagerController implements Initializable {
         }
   }
     public void setData(User user){
+        this.id = user.getId();
         this.fullname.setText(user.getFullname());
         this.email.setText(user.getEmail());
         this.address.setText(user.getAddress());
@@ -111,7 +114,9 @@ public class EmployeeManagerController implements Initializable {
                 user.setAddress(address.getText());
                 user.setRole(comboRole.getValue());
                 user.setPassword(getMD5("123456"));
-                if(s.getUser(user.getUsername())){
+                if(user.getUsername() == null || user.getEmail() == null || user.getFullname() == null || user.getAddress() == null || user.getPhone() == null || user.getRole() == null)
+                    Utils.getAlertBox("You haven't entered all data", Alert.AlertType.ERROR, null, null).show();
+                else if(s.getUser(user.getUsername())){
                     Utils.getAlertBox("This username already exists", Alert.AlertType.ERROR, null, null).show();
                 }else{
                     s.addUser(user);
@@ -133,15 +138,15 @@ public class EmployeeManagerController implements Initializable {
             try{
                 Connection conn = JdbcUtils.getConn();
                 UserService s = new UserService(conn);
-                User user = new User();
-                user.setFullname(fullname.getText());
-                user.setEmail(email.getText());
-                user.setUsername(username.getText());
-                user.setPhone(phone.getText());
-                user.setAddress(address.getText());
-                user.setRole(comboRole.getValue());
-                System.out.println(s.updateUser(user));
-                if(s.updateUser(user)){
+                List<User> l = s.getUsers(this.id);
+                if(l.size() > 0){
+                    l.get(0).setFullname(fullname.getText());
+                    l.get(0).setEmail(email.getText());
+                    l.get(0).setUsername(username.getText());
+                    l.get(0).setPhone(phone.getText());
+                    l.get(0).setAddress(address.getText());
+                    l.get(0).setRole(comboRole.getValue());
+                    s.updateUser(l.get(0));
                     this.cus.loadUser();
                     this.fullname.setText("");
                     this.email.setText("");

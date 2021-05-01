@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="100.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="100.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.TotalPaymentController">
    <children>
-      <HBox layoutY="2.0" prefHeight="100.0" prefWidth="1010.0" stylesheets="@../../../../java/com/boba/values/style.css">
+      <HBox layoutY="2.0" prefHeight="100.0" prefWidth="830.0" stylesheets="@../../../../java/com/boba/values/style.css">
          <children>
-            <Pane prefHeight="84.0" prefWidth="70.0" stylesheets="@../../../../java/com/boba/values/style.css" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="400.0" styleClass="total-income" stylesheets="@../values/style.css">
+            <Pane prefHeight="100.0" prefWidth="40.0" stylesheets="@../../../../java/com/boba/values/style.css" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="350.0" styleClass="total-income" stylesheets="@../values/style.css">
                <children>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="161.0">
                      <children>
@@ -22,19 +22,19 @@
                               <Font name="Cambria Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="210.0" text="over $20 order" textFill="WHITE">
+                        <Label fx:id="totalToday" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="210.0" text="over $20 order" textFill="WHITE">
                            <font>
                               <Font name="Cambria" size="15.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
-                  <Pane prefHeight="100.0" prefWidth="65.0" />
+                  <Pane prefHeight="100.0" prefWidth="30.0" />
                   <FontAwesomeIconView fill="#52e4bb" glyphName="MONEY" size="46" />
                </children>
             </HBox>
-            <Pane prefHeight="84.0" prefWidth="70.0" HBox.hgrow="ALWAYS" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="400.0" styleClass="total-income" stylesheets="@../values/style.css">
+            <Pane prefHeight="100.0" prefWidth="40.0" HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="350.0" styleClass="total-income" stylesheets="@../values/style.css">
                <children>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
                      <children>
@@ -43,18 +43,18 @@
                               <Font name="Cambria Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="207.0" text="2 Million" textFill="WHITE">
+                        <Label fx:id="totalMonth" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="207.0" text="2 Million" textFill="WHITE">
                            <font>
                               <Font name="Cambria" size="15.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
-                  <Pane prefHeight="100.0" prefWidth="65.0" />
+                  <Pane prefHeight="100.0" prefWidth="30.0" />
                   <FontAwesomeIconView fill="#52e4bb" glyphName="TROPHY" size="46" />
                </children>
             </HBox>
-            <Pane prefHeight="84.0" prefWidth="70.0" />
+            <Pane prefHeight="100.0" prefWidth="40.0" />
          </children>
       </HBox>
    </children>

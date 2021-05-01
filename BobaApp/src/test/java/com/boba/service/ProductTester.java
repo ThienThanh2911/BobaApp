@@ -1,4 +1,4 @@
-/*
+     /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,10 +53,9 @@ public class ProductTester {
     @Test
     public void testWithKeyword() throws SQLException {
         ProductService s = new ProductService(conn);
-        List<Product> products = s.getProducts("iphone");
-        
+        List<Product> products = s.getProducts("Hồng trà");
         products.forEach(p -> {
-            Assertions.assertTrue(p.getName().toLowerCase().contains("iphone"));
+            Assertions.assertTrue(p.getName().toLowerCase().contains("Hồng trà"));
         });
     }
     
@@ -77,27 +78,12 @@ public class ProductTester {
     @Test
     @DisplayName("...")
     @Tag("add-product")
-    public void testAddProductWithInvalidCateId() {
-        ProductService s = new ProductService(conn);
-        
-        Product p = new Product();
-        p.setName("ABC");
-        p.setPrice(new BigDecimal(100));
-        p.setCategoryId(999);
-        
-        Assertions.assertFalse(s.addProduct(p));
-    }
-    
-    @Test
-    @DisplayName("...")
-    @Tag("add-product")
     public void testAddProductWithInvalidName() {
         ProductService s = new ProductService(conn);
         
         Product p = new Product();
         p.setName(null);
         p.setPrice(new BigDecimal(100));
-        p.setCategoryId(1);
         
         Assertions.assertFalse(s.addProduct(p));
     }
@@ -111,21 +97,15 @@ public class ProductTester {
         Product p = new Product();
         p.setName("ABC");
         p.setPrice(new BigDecimal(99999));
-        p.setCategoryId(2);
+        p.setCreatedBy("asdw");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(java.time.LocalDate.now().toString(), formatter);
+        p.setCreatedDate(localDate.toString());
+        p.setActive(true);
+        p.setDescription("fewfw");
+        p.setImage("/images/hongtra.png");
         
         Assertions.assertTrue(s.addProduct(p));
     }
-    
-    @ParameterizedTest
-    @CsvSource({"P1,99,9999,false", ",99,9999,false", "P1,99,2,true"})
-    public void testDataSource(String name, BigDecimal price, int cateId, boolean expected) {
-        ProductService s = new ProductService(conn);
-        
-        Product p = new Product();
-        p.setName(name);
-        p.setPrice(price);
-        p.setCategoryId(cateId);
-        
-        Assertions.assertEquals(expected, s.addProduct(p));
-    }
+
 }

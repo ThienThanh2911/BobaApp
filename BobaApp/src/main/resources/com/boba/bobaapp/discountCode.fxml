@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="781.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.DiscountCodeController">
+   <children>
+      <Label layoutX="532.0" layoutY="14.0" text="Created date" />
+      <FontAwesomeIconView fx:id="info" fill="#828282" glyphName="INFO" layoutX="729.0" layoutY="60.0" size="24" wrappingWidth="6.285714149475098">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <FontAwesomeIconView fx:id="delete" fill="RED" glyphName="TRASH" layoutX="748.0" layoutY="59.5" selectionFill="#e60f0f" size="24">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <Label layoutX="121.0" layoutY="14.0" text="Discount Code" />
+      <TextField fx:id="disCode" alignment="CENTER" disable="true" editable="false" layoutX="121.0" layoutY="38.0" prefHeight="25.0" prefWidth="230.0" styleClass="text" />
+      <DatePicker fx:id="disCreatedDate" disable="true" editable="false" layoutX="532.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" styleClass="text" stylesheets="@../values/style.css" />
+      <Separator layoutX="8.0" layoutY="80.0" prefHeight="10.0" prefWidth="765.0" />
+      <Label layoutX="14.0" layoutY="14.0" text="Discount ID" />
+      <TextField fx:id="disID" alignment="CENTER" disable="true" editable="false" layoutX="27.0" layoutY="40.0" prefHeight="25.0" prefWidth="36.0" styleClass="text" />
+      <Label layoutX="371.0" layoutY="15.0" text="Percent Discount" />
+      <TextField fx:id="percentDiscount" alignment="CENTER" disable="true" editable="false" layoutX="371.0" layoutY="39.0" prefHeight="25.0" prefWidth="140.0" styleClass="text" />
+   </children>
+</AnchorPane>

@@ -17,7 +17,6 @@ public class Product {
     private String image;
     private String name;
     private BigDecimal price;
-    private int categoryId;
     private String description;
     private String createdDate;
     private String createdBy;
@@ -77,20 +76,6 @@ public class Product {
      */
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    /**
-     * @return the categoryId
-     */
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    /**
-     * @param categoryId the categoryId to set
-     */
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
     }
 
     /**

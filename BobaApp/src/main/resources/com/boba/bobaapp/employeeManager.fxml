@@ -11,15 +11,15 @@
    <children>
       <Text layoutX="16.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full name" />
       <Text layoutX="16.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <TextField fx:id="fullname" layoutX="95.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" />
-      <TextField fx:id="email" layoutX="95.0" layoutY="56.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="fullname" alignment="CENTER" layoutX="95.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="email" alignment="CENTER" layoutX="95.0" layoutY="56.0" prefHeight="25.0" prefWidth="200.0" />
       <Text layoutX="314.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
       <Text layoutX="607.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" />
-      <TextField fx:id="username" layoutX="389.0" layoutY="15.0" prefHeight="25.0" prefWidth="200.0" />
-      <TextField fx:id="phone" layoutX="668.0" layoutY="15.0" prefHeight="25.0" prefWidth="140.0" />
+      <TextField fx:id="username" alignment="CENTER" layoutX="389.0" layoutY="15.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="phone" alignment="CENTER" layoutX="668.0" layoutY="15.0" prefHeight="25.0" prefWidth="140.0" />
       <Text layoutX="314.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
       <Text layoutX="605.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Role" />
-      <TextField fx:id="address" layoutX="389.0" layoutY="55.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="address" alignment="CENTER" layoutX="389.0" layoutY="55.0" prefHeight="25.0" prefWidth="200.0" />
       <JFXComboBox fx:id="comboRole" layoutX="668.0" layoutY="55.0" prefHeight="25.0" prefWidth="140.0">
          <cursor>
             <Cursor fx:constant="HAND" />

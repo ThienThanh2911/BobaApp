@@ -155,3 +155,7 @@
     -fx-background-color: linear-gradient(to top, #0984e3, #74b9ff);
     -fx-background-radius:30;
 }
+
+.text:disabled {
+    -fx-opacity: 1.0;
+}

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="805.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.TopProductChartController">
    <children>
-      <PieChart layoutX="14.0" layoutY="25.0" prefHeight="500.0" prefWidth="500.0" />
       <Label alignment="CENTER" layoutX="533.0" layoutY="25.0" prefHeight="35.0" prefWidth="250.0" text="TOP PRODUCT" textFill="#d63031">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -39,5 +39,13 @@
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
+      <BarChart fx:id="barChart" layoutX="33.0" layoutY="75.0">
+        <xAxis>
+          <CategoryAxis fx:id="Day" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="Price" side="LEFT" />
+        </yAxis>
+      </BarChart>
    </children>
 </AnchorPane>

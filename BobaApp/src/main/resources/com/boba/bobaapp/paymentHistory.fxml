@@ -6,18 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="83.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.EmployeeItemController">
+<AnchorPane id="AnchorPane" prefHeight="83.0" prefWidth="781.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.bobaapp.PaymentHistoryController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" text="Bill ID" />
-      <TextField fx:id="pmID" editable="false" layoutX="14.0" layoutY="40.0" prefHeight="25.0" prefWidth="40.0" />
-      <Label layoutX="230.0" layoutY="14.0" text="Total Price" />
-      <TextField fx:id="totalPrice" editable="false" layoutX="230.0" layoutY="40.0" prefHeight="25.0" prefWidth="150.0" />
-      <Label layoutX="409.0" layoutY="14.0" text="Created by" />
-      <TextField fx:id="employeeName" editable="false" layoutX="409.0" layoutY="40.0" prefHeight="25.0" prefWidth="150.0" />
+      <TextField fx:id="pmID" alignment="CENTER" disable="true" editable="false" layoutX="14.0" layoutY="40.0" prefHeight="25.0" prefWidth="36.0" styleClass="text" />
+      <Label layoutX="333.0" layoutY="14.0" text="Total Price" />
+      <TextField fx:id="totalPrice" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="333.0" layoutY="40.0" prefHeight="25.0" prefWidth="227.0" styleClass="text" />
+      <Label layoutX="80.0" layoutY="14.0" text="Created by" />
+      <TextField fx:id="createdBy" disable="true" editable="false" layoutX="80.0" layoutY="40.0" prefHeight="25.0" prefWidth="227.0" styleClass="text" />
       <Label layoutX="589.0" layoutY="14.0" text="Created date" />
-      <Label layoutX="78.0" layoutY="14.0" text="Customer name" />
-      <TextField fx:id="cusName" editable="false" layoutX="78.0" layoutY="40.0" prefHeight="25.0" prefWidth="130.0" />
       <Separator layoutX="8.0" layoutY="80.0" prefHeight="10.0" prefWidth="765.0" />
-      <DatePicker fx:id="createdDate" editable="false" layoutX="589.0" layoutY="40.0" prefHeight="25.0" prefWidth="150.0" />
+      <DatePicker fx:id="createdDate" disable="true" editable="false" layoutX="589.0" layoutY="40.0" prefHeight="25.0" prefWidth="150.0" styleClass="text" />
    </children>
 </AnchorPane>
