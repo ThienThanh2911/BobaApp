@@ -132,11 +132,15 @@ public class ProductTester {
     @Test
     @DisplayName("Kiểm thử sửa sản phẩm với id không hợp lệ")
     public void testUpdateProductWithInvalidId() {
-        ProductService s = new ProductService(conn);
-        
-        
-        
-        Assertions.assertFalse(s.addProduct(p));
+        try {
+            ProductService s = new ProductService(conn);
+            
+            products = s.getProducts("");
+            
+            Assertions.assertFalse(s.updateProduct(products.get(999)));
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductTester.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @Test
