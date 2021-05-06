@@ -30,11 +30,9 @@ public class UserService {
     public List<User> getUsers(int kw) throws SQLException {
         if (kw == 0)
             throw new SQLDataException("error");
-        
-        String sql = "SELECT * FROM user WHERE id like concat('%', ?, '%') ORDER BY id DESC";
-        PreparedStatement stm = this.getConn().prepareStatement(sql);
-        stm.setInt(1, kw);
-        ResultSet rs = stm.executeQuery();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM user WHERE id = "+kw+" ORDER BY id DESC");
+
         List<User> users = new ArrayList<>();
         while (rs.next()) {
             User u = new User();
