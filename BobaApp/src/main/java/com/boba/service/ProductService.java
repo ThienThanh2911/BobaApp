@@ -32,11 +32,9 @@ public class ProductService {
         if (kw == 0)
             throw new SQLDataException("error");
         
-        String sql = "SELECT * FROM product WHERE id like concat('%', ?, '%') ORDER BY id DESC";
-        PreparedStatement stm = this.getConn().prepareStatement(sql);
-        stm.setInt(1, kw);
-        
-        ResultSet rs = stm.executeQuery();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM product WHERE id = "+kw+" ORDER BY id DESC");
+            
         List<Product> products = new ArrayList<>();
         while (rs.next()) {
             Product p = new Product();
@@ -131,7 +129,6 @@ public class ProductService {
     public boolean updateProduct(Product p) {
         try {
             Statement stm = conn.createStatement();
-            System.out.print(p.getId());
             int rows = stm.executeUpdate("UPDATE product SET name = '"+p.getName()+"', image = '"+p.getImage()+"', price = '"+p.getPrice()+"', description = '"+p.getDescription()+"', created_by = '"+p.getCreatedBy()+"', created_date = '"+p.getCreatedDate()+"',active = "+p.isActive()+"  WHERE id ='"+p.getId()+"'");
             
             return rows > 0;

@@ -353,9 +353,16 @@ public class CustomerController implements Initializable{
                 vbox.getChildren().remove(3);
             vbox.getChildren().add(3, anchorPane1);
             if(scroll.getPrefHeight() == 400)
-                scroll.setPrefHeight(scroll.getPrefHeight() + 50);
-            else if(scroll.getPrefHeight() == 550)
-                scroll.setPrefHeight(scroll.getPrefHeight() - 100);
+                scroll.setPrefHeight(scroll.getPrefHeight() + 300);
+            grid.add(anchorPane1, 0, 1); //(child,column,row)
+            //set grid width
+            grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+            grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+            grid.setMaxWidth(Region.USE_PREF_SIZE);
+            //set grid height
+            grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+            grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+            grid.setMaxHeight(Region.USE_PREF_SIZE);
         } catch (IOException ex) {
             Logger.getLogger(CustomerController.class.getName()).log(Level.SEVERE, null, ex);
         }

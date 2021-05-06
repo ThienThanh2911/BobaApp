@@ -51,15 +51,17 @@ public class ProductTester {
     }
     
     @Test
+    @DisplayName("Kiểm thử tìm kiếm đúng tên sản phẩm")
     public void testWithKeyword() throws SQLException {
         ProductService s = new ProductService(conn);
-        List<Product> products = s.getProducts("Hồng trà");
+        List<Product> products = s.getProducts("Hồng Trà");
         products.forEach(p -> {
-            Assertions.assertTrue(p.getName().toLowerCase().contains("Hồng trà"));
+            Assertions.assertTrue(p.getName().toLowerCase().contains("hồng trà"));
         });
     }
     
     @Test
+    @DisplayName("Kiểm thử tìm kiếm sai tên sản phẩm")
     public void testWithUnknowKeyword() throws SQLException {
         ProductService s = new ProductService(conn);
         List<Product> products = s.getProducts("273627uiesdsjd#$%^");
@@ -68,6 +70,27 @@ public class ProductTester {
     }
     
     @Test
+    @DisplayName("Kiểm thử tìm kiếm đúng id sản phẩm")
+    public void testSearchProductWithId() throws SQLException {
+        ProductService s = new ProductService(conn);
+        List<Product> products = s.getProducts(2);
+        products.forEach(p->{
+            System.out.print(p.getName());
+        });
+        
+        Assertions.assertEquals(1, products.size());
+    }
+    
+    @Test
+    @DisplayName("Kiểm thử tìm kiếm sai id sản phẩm")
+    public void testSearchProductWithInvalidId() throws SQLException {
+        ProductService s = new ProductService(conn);
+        List<Product> products = s.getProducts(999);
+        Assertions.assertEquals(0, products.size());
+    }
+    
+    @Test
+    @DisplayName("Kiểm thử ném đúng ngoại lệ mong muốn")
     public void testException() throws SQLException {
         Assertions.assertThrows(SQLDataException.class, () -> {
             ProductService s = new ProductService(conn);
@@ -76,8 +99,7 @@ public class ProductTester {
     }
     
     @Test
-    @DisplayName("...")
-    @Tag("add-product")
+    @DisplayName("Kiểm thử thêm sản phẩm với tên không hợp lệ")
     public void testAddProductWithInvalidName() {
         ProductService s = new ProductService(conn);
         
@@ -89,8 +111,7 @@ public class ProductTester {
     }
     
     @Test
-    @DisplayName("...")
-    @Tag("add-product")
+    @DisplayName("Kiểm thử thêm sản phẩm")
     public void testAddProduct() {
         ProductService s = new ProductService(conn);
         
@@ -107,5 +128,31 @@ public class ProductTester {
         
         Assertions.assertTrue(s.addProduct(p));
     }
+    
+    @Test
+    @DisplayName("Kiểm thử sửa sản phẩm với id không hợp lệ")
+    public void testUpdateProductWithInvalidId() {
+        ProductService s = new ProductService(conn);
+        
+        
+        
+        Assertions.assertFalse(s.addProduct(p));
+    }
+    
+    @Test
+    @DisplayName("Kiểm thử xóa sản phẩm với id không hợp lệ")
+    public void testRemoveProductWithInvalidId() {
+        ProductService s = new ProductService(conn);
+        
+        Assertions.assertFalse(s.deleteProduct(999));
+    }
 
+    @Test
+    @DisplayName("Kiểm thử xóa sản phẩm")
+    public void testRemoveProduct() {
+        ProductService s = new ProductService(conn);
+        
+        Assertions.assertFalse(s.deleteProduct(5));
+    }
+    
 }

@@ -52,9 +52,11 @@ DROP TABLE IF EXISTS `payment`;
 CREATE TABLE `payment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `total_price` decimal(10,0) NOT NULL,
-  `created_by` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `created_by` int NOT NULL,
   `created_date` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_CREATED_PAY_BY_idx` (`created_by`),
+  CONSTRAINT `FK_CREATED_PAY_BY_idx` FOREIGN KEY (`created_by`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -78,13 +80,15 @@ DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `created_by` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_by` int NOT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `price` decimal(10,0) DEFAULT '0',
   `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_date` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `active` bit(1) DEFAULT b'1',
   PRIMARY KEY (`id`)
+  KEY `FK_CREATED_PRODUCT_BY_idx` (`created_by`),
+  CONSTRAINT `FK_CREATED_PRODUCT_BY_idx` FOREIGN KEY (`created_by`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -113,8 +117,8 @@ CREATE TABLE `user` (
   `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `user_role` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  `user_role` enum('USER','ADMIN') NOT NULL,
+  PRIMARY KEY (`id`, `full_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -124,7 +128,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (9,'Thiên Thành','ctthanh2911@gmail.com','thienthanh2911','856eae3e7373f1f786c0febfa3ec5000','vhbhjbj','bhjbjh','USER'),(19,'Thiên Tựu','thientuu2911@gmail.com','thientuu2911','1c22e0f5c09af510a15da64a6499e3df','hjhjknkllk','xdxfcy','ADMIN');
+INSERT INTO `user` VALUES (9,'Thiên Thành','ctthanh2911@gmail.com','thienthanh2911','856eae3e7373f1f786c0febfa3ec5000','vhbhjbj','bhjbjh',1),(19,'Thiên Tựu','thientuu2911@gmail.com','thientuu2911','1c22e0f5c09af510a15da64a6499e3df','hjhjknkllk','xdxfcy',2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
