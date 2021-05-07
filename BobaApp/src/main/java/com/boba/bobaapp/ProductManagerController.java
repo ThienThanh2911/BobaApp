@@ -97,6 +97,9 @@ public class ProductManagerController implements Initializable {
                 if(product.getName() == null || product.getPrice()== null || product.getCreatedBy()== null || product.getDescription()== null || product.getCreatedDate()== null || product.getImage() == null)
                     Utils.getAlertBox("You haven't entered all data", Alert.AlertType.ERROR, null, null).show();
                 else {
+                    if(product.getName().equals(s.getProducts(product.getName()).get(0).getName()))
+                        Utils.getAlertBox("This product name already exists!", Alert.AlertType.ERROR, null, null).show();
+                    else
                     if(s.addProduct(product)){
                         this.cus.loadProduct();
                         Utils.getAlertBox("Product added successfully!", Alert.AlertType.INFORMATION, null, null).show();

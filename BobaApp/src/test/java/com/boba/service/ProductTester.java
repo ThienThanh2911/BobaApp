@@ -78,9 +78,6 @@ public class ProductTester {
     public void testSearchProductWithId() throws SQLException {
         ProductService s = new ProductService(conn);
         List<Product> products = s.getProducts(2);
-        products.forEach(p->{
-            System.out.print(p.getName());
-        });
         
         Assertions.assertEquals(1, products.size());
     }
@@ -171,9 +168,8 @@ public class ProductTester {
         List <Product> products;
         try {
             products = s.getProducts("");
-        
             
-        Assertions.assertTrue(s.deleteProduct(products.get(0).getId()));
+            Assertions.assertTrue(s.deleteProduct(products.get(0).getId()));
         } catch (SQLException ex) {
             Logger.getLogger(ProductTester.class.getName()).log(Level.SEVERE, null, ex);
         }

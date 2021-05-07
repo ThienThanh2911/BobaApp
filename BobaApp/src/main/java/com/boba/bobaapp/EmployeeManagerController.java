@@ -22,7 +22,6 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
@@ -101,6 +100,8 @@ public class EmployeeManagerController implements Initializable {
             this.phone.setText("");
             this.username.setText("");
             this.comboRole.getItems().clear();
+            this.comboRole.getItems().add("USER");
+            this.comboRole.getItems().add("ADMIN");
         });
         this.btnAdd.setOnAction(e->{
             try{
@@ -128,6 +129,8 @@ public class EmployeeManagerController implements Initializable {
                     this.phone.setText("");
                     this.username.setText("");
                     this.comboRole.getItems().clear();
+                    this.comboRole.getItems().add("USER");
+                    this.comboRole.getItems().add("ADMIN");
                 }
                 conn.close();
             } catch (SQLException ex) {
@@ -139,6 +142,7 @@ public class EmployeeManagerController implements Initializable {
                 Connection conn = JdbcUtils.getConn();
                 UserService s = new UserService(conn);
                 List<User> l = s.getUsers(this.id);
+                User user = new User();
                 if(l.size() > 0){
                     l.get(0).setFullname(fullname.getText());
                     l.get(0).setEmail(email.getText());
@@ -154,8 +158,12 @@ public class EmployeeManagerController implements Initializable {
                     this.phone.setText("");
                     this.username.setText("");
                     this.comboRole.getItems().clear();
+                    this.comboRole.getItems().add("USER");
+                    this.comboRole.getItems().add("ADMIN");
                     Utils.getAlertBox("Account updated successfully!", Alert.AlertType.INFORMATION, null, null).show();
-                }else{
+                } else if(username.getText() == null || email.getText() == null || fullname.getText() == null || address.getText() == null || phone.getText() == null || comboRole.getItems() == null)
+                    Utils.getAlertBox("You haven't entered all data", Alert.AlertType.ERROR, null, null).show();
+                else{
                     Utils.getAlertBox("This username isn't exists!", Alert.AlertType.ERROR, null, null).show();
                 }
                 
