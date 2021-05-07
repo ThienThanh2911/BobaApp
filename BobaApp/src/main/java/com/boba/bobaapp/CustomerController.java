@@ -33,6 +33,7 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -129,9 +130,10 @@ public class CustomerController implements Initializable{
                 gridBill.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 gridBill.setMaxHeight(Region.USE_PREF_SIZE);
             }
+            DecimalFormat formatter = new DecimalFormat("###,###,###.##");
             totalProduct.setText(String.valueOf(totalPro));
-            totalPrice.setText(String.valueOf(totalPri - totalPri*dis/100) + " VNĐ");
-            discountPrice.setText(String.valueOf(dis)+"% (-"+String.valueOf(totalPri*dis/100)+" VNĐ)");
+            totalPrice.setText(String.valueOf(formatter.format(totalPri - totalPri*dis/100)) + " VNĐ");
+            discountPrice.setText(String.valueOf(dis)+"% (-"+String.valueOf(formatter.format(totalPri*dis/100))+" VNĐ)");
         } catch (IOException e) {
                 e.printStackTrace();
         }
@@ -262,6 +264,8 @@ public class CustomerController implements Initializable{
                 scroll.setPrefHeight(scroll.getPrefHeight() + 50);
             else if(scroll.getPrefHeight() == 550)
                 scroll.setPrefHeight(scroll.getPrefHeight() - 100);
+			else if(scroll.getPrefHeight() == 700)
+                scroll.setPrefHeight(scroll.getPrefHeight() - 250);
             
             for (int i = 0; i < payments.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -354,6 +358,8 @@ public class CustomerController implements Initializable{
             vbox.getChildren().add(3, anchorPane1);
             if(scroll.getPrefHeight() == 400)
                 scroll.setPrefHeight(scroll.getPrefHeight() + 300);
+			else if(scroll.getPrefHeight() == 450)
+                scroll.setPrefHeight(scroll.getPrefHeight() + 250);
             grid.add(anchorPane1, 0, 1); //(child,column,row)
             //set grid width
             grid.setMinWidth(Region.USE_COMPUTED_SIZE);

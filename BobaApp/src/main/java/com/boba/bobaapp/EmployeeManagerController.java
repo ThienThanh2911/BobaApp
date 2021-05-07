@@ -142,7 +142,6 @@ public class EmployeeManagerController implements Initializable {
                 Connection conn = JdbcUtils.getConn();
                 UserService s = new UserService(conn);
                 List<User> l = s.getUsers(this.id);
-                User user = new User();
                 if(l.size() > 0){
                     l.get(0).setFullname(fullname.getText());
                     l.get(0).setEmail(email.getText());

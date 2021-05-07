@@ -40,6 +40,8 @@ public class LoginController implements Initializable {
     @FXML
     private Label error;
     @FXML
+    private Label linkChange;
+    @FXML
     private void close_app(MouseEvent event){
         System.exit(0);
     }
@@ -47,6 +49,13 @@ public class LoginController implements Initializable {
     @FXML
     private void open_registration(MouseEvent event) throws IOException{
         Parent fxml = FXMLLoader.load(getClass().getResource("registrationUI.fxml"));
+        content_area.getChildren().removeAll();
+        content_area.getChildren().setAll(fxml);
+    }
+    
+    @FXML
+    private void open_changepassword(MouseEvent event) throws IOException{
+        Parent fxml = FXMLLoader.load(getClass().getResource("changePasswordUI.fxml"));
         content_area.getChildren().removeAll();
         content_area.getChildren().setAll(fxml);
     }

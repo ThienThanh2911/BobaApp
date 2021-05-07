@@ -82,9 +82,10 @@ public class DiscountManagerController implements Initializable {
                 if(discount.getDiscountCode()== null || discount.getPercentDiscount() == 0 || discount.getCreatedDate()== null || discount.isActive() == false)
                     Utils.getAlertBox("You haven't entered all data", Alert.AlertType.ERROR, null, null).show();
                 else {
-                    if(discount.getDiscountCode().equals(s.getDiscounts(discount.getDiscountCode()).get(0).getDiscountCode()))
-                        Utils.getAlertBox("This discount code already exists!", Alert.AlertType.ERROR, null, null).show();
-                    else
+					if(!s.getDiscounts(discount.getDiscountCode()).isEmpty()){
+						if(discount.getDiscountCode().equals(s.getDiscounts(discount.getDiscountCode()).get(0).getDiscountCode()))
+							Utils.getAlertBox("This discount code already exists!", Alert.AlertType.ERROR, null, null).show();
+                    }else
                         if(s.addDiscount(discount)){
                             this.cus.loadDiscount();
                             Utils.getAlertBox("Discount added successfully!", Alert.AlertType.INFORMATION, null, null).show();

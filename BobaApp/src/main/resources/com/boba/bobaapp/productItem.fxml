@@ -15,7 +15,7 @@
       <Label layoutX="238.0" layoutY="14.0" text="Desciption" />
       <TextField fx:id="pDes" disable="true" editable="false" layoutX="238.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" styleClass="text" />
       <Label layoutX="400.0" layoutY="14.0" text="Price" />
-      <TextField fx:id="pPrice" disable="true" editable="false" layoutX="400.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" styleClass="text" />
+      <TextField fx:id="pPrice" alignment="CENTER_RIGHT" disable="true" editable="false" layoutX="400.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" styleClass="text" />
       <Label layoutX="565.0" layoutY="14.0" text="Created date" />
       <FontAwesomeIconView fx:id="info" fill="#828282" glyphName="INFO" layoutX="729.0" layoutY="60.0" size="24" wrappingWidth="6.285714149475098">
          <cursor>

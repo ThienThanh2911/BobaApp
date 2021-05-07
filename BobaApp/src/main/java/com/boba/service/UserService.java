@@ -125,7 +125,7 @@ public class UserService {
     public boolean updateUser(User u) {
         try {
             Statement stm = conn.createStatement();
-            int rows = stm.executeUpdate("UPDATE user SET full_name = '"+u.getFullname()+"', email = '"+u.getEmail()+"', username = '"+u.getUsername()+"', address = '"+u.getAddress()+"', phone = '"+u.getPhone()+"', user_role = '"+u.getRole()+"' WHERE username ='"+u.getUsername()+"'");
+            int rows = stm.executeUpdate("UPDATE user SET full_name = '"+u.getFullname()+"', email = '"+u.getEmail()+"', username = '"+u.getUsername()+"', address = '"+u.getAddress()+"', password = '"+u.getPassword()+"', phone = '"+u.getPhone()+"', user_role = '"+u.getRole()+"' WHERE username ='"+u.getUsername()+"'");
             
             return rows > 0;
         } catch (SQLException ex) {

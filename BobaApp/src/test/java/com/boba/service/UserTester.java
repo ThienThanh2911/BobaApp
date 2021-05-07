@@ -79,10 +79,26 @@ public class UserTester {
     
     @Test
     @Order(4)
-    @DisplayName("Kiểm thử tìm kiếm đúng tên người dùng")
+    @DisplayName("Kiểm thử tìm kiếm đúng tài khoản người dùng")
     public void testWithKeyword() throws SQLException {
         UserService u = new UserService(conn);
         
         Assertions.assertEquals(true, u.getUser("thienthanh2911"));
+    }
+    @Test
+    @Order(4)
+    @DisplayName("Kiểm thử tìm kiếm đúng tài khoản người dùng")
+    public void testWithUnknowKeyword() throws SQLException {
+        UserService u = new UserService(conn);
+        
+        Assertions.assertEquals(false, u.getUser("fweFWE#@"));
+    }
+    @Test
+    @Order(5)
+    @DisplayName("Kiểm thử kiểm tài khoản người dùng có tồn tại hay không")
+    public void testUserExist() throws SQLException {
+        UserService u = new UserService(conn);
+        
+        Assertions.assertEquals(true, u.getUser("thientuu2911"));
     }
 }

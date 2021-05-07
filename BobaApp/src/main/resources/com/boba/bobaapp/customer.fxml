@@ -111,7 +111,7 @@
                            </children>
                         </HBox>
                         <Pane prefHeight="37.0" prefWidth="335.0" />
-                        <JFXButton fx:id="addToCart" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="ADD TO CARD" textFill="#828282">
+                        <JFXButton fx:id="addToCart" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="ADD TO CART" textFill="#828282">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>

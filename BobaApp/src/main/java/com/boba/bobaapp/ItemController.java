@@ -1,6 +1,7 @@
 package com.boba.bobaapp;
 
 import com.boba.pojo.Product;
+import java.text.DecimalFormat;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -26,10 +27,11 @@ public class ItemController {
     private MyListener myListener;
 
     public void setData(Product product, MyListener myListener) {
+	DecimalFormat formatter = new DecimalFormat("###,###,###.##");
         this.product = product;
         this.myListener = myListener;
         nameLabel.setText(product.getName());
-        priceLabel.setText(product.getPrice().toString());
+        priceLabel.setText(formatter.format(product.getPrice()) + " VNĐ");
         Image image = new Image(getClass().getResourceAsStream(product.getImage()));
         img.setImage(image);
     }
