@@ -82,19 +82,19 @@ public class DiscountManagerController implements Initializable {
                 if(discount.getDiscountCode()== null || discount.getPercentDiscount() == 0 || discount.getCreatedDate()== null || discount.isActive() == false)
                     Utils.getAlertBox("You haven't entered all data", Alert.AlertType.ERROR, null, null).show();
                 else {
-					if(!s.getDiscounts(discount.getDiscountCode()).isEmpty()){
-						if(discount.getDiscountCode().equals(s.getDiscounts(discount.getDiscountCode()).get(0).getDiscountCode()))
-							Utils.getAlertBox("This discount code already exists!", Alert.AlertType.ERROR, null, null).show();
-                    }else
-                        if(s.addDiscount(discount)){
-                            this.cus.loadDiscount();
-                            Utils.getAlertBox("Discount added successfully!", Alert.AlertType.INFORMATION, null, null).show();
-                            discountCode.setText("");
-                            percent.setText("");
-                            disCreatedDate.setValue(null);
-                            disActive.setSelected(false);
-                        }
-                }
+                    if(!s.getDiscounts(discount.getDiscountCode()).isEmpty()){
+                        if(discount.getDiscountCode().equals(s.getDiscounts(discount.getDiscountCode()).get(0).getDiscountCode()))
+                            Utils.getAlertBox("This discount code already exists!", Alert.AlertType.ERROR, null, null).show();
+                        }else
+                            if(s.addDiscount(discount)){
+                                this.cus.loadDiscount();
+                                Utils.getAlertBox("Discount added successfully!", Alert.AlertType.INFORMATION, null, null).show();
+                                discountCode.setText("");
+                                percent.setText("");
+                                disCreatedDate.setValue(null);
+                                disActive.setSelected(false);
+                            }
+                    }
                 conn.close();
             } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -112,23 +112,45 @@ public class DiscountManagerController implements Initializable {
                 DiscountService s = new DiscountService(conn);
                 List<Discount> l = s.getDiscounts(this.id);
                 if(l.size() > 0){
-                    l.get(0).setDiscountCode(discountCode.getText());
-                    l.get(0).setPercentDiscount(Integer.valueOf(percent.getText()));
-                    l.get(0).setCreatedDate(disCreatedDate.getValue().toString());
-                    l.get(0).setActive(disActive.isSelected());
-                    s.updateDiscount(l.get(0));
-                    Utils.getAlertBox("Discount updated successfully!", Alert.AlertType.INFORMATION, null, null).show();
-                    discountCode.setText("");
-                    percent.setText("");
-                    disCreatedDate.setValue(null);
-                    disActive.setSelected(false);
-                    this.cus.loadDiscount();
+                    if(discountCode.getText() == null || "".equals(discountCode.getText()))
+                        Utils.getAlertBox("You haven't entered discount code", Alert.AlertType.ERROR, null, null).show();
+                    else{
+                        if(!s.getDiscounts(discountCode.getText()).isEmpty()){
+                            if(discountCode.getText().equals(s.getDiscounts(discountCode.getText()).get(0).getDiscountCode()))
+                                Utils.getAlertBox("This discount code already exists!", Alert.AlertType.ERROR, null, null).show();
+                            else{
+                                l.get(0).setDiscountCode(discountCode.getText());
+                                l.get(0).setPercentDiscount(Integer.valueOf(percent.getText()));
+                                l.get(0).setCreatedDate(disCreatedDate.getValue().toString());
+                                l.get(0).setActive(disActive.isSelected());
+                                s.updateDiscount(l.get(0));
+                                Utils.getAlertBox("Discount updated successfully!", Alert.AlertType.INFORMATION, null, null).show();
+                                discountCode.setText("");
+                                percent.setText("");
+                                disCreatedDate.setValue(null);
+                                disActive.setSelected(false);
+                                this.cus.loadDiscount();
+                            }
+                        }else{
+                            l.get(0).setDiscountCode(discountCode.getText());
+                            l.get(0).setPercentDiscount(Integer.valueOf(percent.getText()));
+                            l.get(0).setCreatedDate(disCreatedDate.getValue().toString());
+                            l.get(0).setActive(disActive.isSelected());
+                            s.updateDiscount(l.get(0));
+                            Utils.getAlertBox("Discount updated successfully!", Alert.AlertType.INFORMATION, null, null).show();
+                            discountCode.setText("");
+                            percent.setText("");
+                            disCreatedDate.setValue(null);
+                            disActive.setSelected(false);
+                            this.cus.loadDiscount();
+                        }
+                    }
                 }else
                     Utils.getAlertBox("Discount's code not found", Alert.AlertType.ERROR, null, null).show();
             } catch (SQLException ex) {
                 Logger.getLogger(ProductManagerController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    }    
+    }  
     
 }

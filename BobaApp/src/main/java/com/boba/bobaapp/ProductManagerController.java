@@ -133,23 +133,51 @@ public class ProductManagerController implements Initializable {
                 ProductService s = new ProductService(conn);
                 List<Product> l = s.getProducts(this.id);
                 if(l.size() > 0){
-                    l.get(0).setName(pName.getText());
-                    l.get(0).setPrice(BigDecimal.valueOf(Integer.parseInt(pPrice.getText())));
-                    l.get(0).setImage(pImage.getText());
-                    l.get(0).setCreatedBy(pCreatedBy.getText());
-                    l.get(0).setCreatedDate(pDate.getValue().toString());
-                    l.get(0).setDescription(pDes.getText());
-                    l.get(0).setActive(pActive.isSelected());
-                    s.updateProduct(l.get(0));
-                    this.cus.loadProduct();
-                    Utils.getAlertBox("Product updated successfully!", Alert.AlertType.INFORMATION, null, null).show();
-                    pName.setText("");
-                    pPrice.setText("");
-                    pImage.setText("");
-                    pActive.setSelected(false);
-                    pCreatedBy.setText("");
-                    pDate.setValue(null);
-                    pDes.setText(null);
+                    if(pName.getText() == null || pPrice.getText() == null || "".equals(pPrice.getText()) || "".equals(pName.getText()))
+                        Utils.getAlertBox("You haven't entered Name or Price of product", Alert.AlertType.ERROR, null, null).show();
+                    else{
+                        if(!s.getProducts(pName.getText()).isEmpty()){
+                            if(pName.getText().equals(s.getProducts(pName.getText()).get(0).getName()) && !pName.getText().equals(l.get(0).getName())){
+                                Utils.getAlertBox("This product name already exists!", Alert.AlertType.ERROR, null, null).show();
+                            }else{
+                                l.get(0).setName(pName.getText());
+                                l.get(0).setPrice(BigDecimal.valueOf(Integer.parseInt(pPrice.getText())));
+                                l.get(0).setImage(pImage.getText());
+                                l.get(0).setCreatedBy(pCreatedBy.getText());
+                                l.get(0).setCreatedDate(pDate.getValue().toString());
+                                l.get(0).setDescription(pDes.getText());
+                                l.get(0).setActive(pActive.isSelected());
+                                s.updateProduct(l.get(0));
+                                this.cus.loadProduct();
+                                Utils.getAlertBox("Product updated successfully!", Alert.AlertType.INFORMATION, null, null).show();
+                                pName.setText("");
+                                pPrice.setText("");
+                                pImage.setText("");
+                                pActive.setSelected(false);
+                                pCreatedBy.setText("");
+                                pDate.setValue(null);
+                                pDes.setText(null);
+                            }
+                        }else{
+                            l.get(0).setName(pName.getText());
+                            l.get(0).setPrice(BigDecimal.valueOf(Integer.parseInt(pPrice.getText())));
+                            l.get(0).setImage(pImage.getText());
+                            l.get(0).setCreatedBy(pCreatedBy.getText());
+                            l.get(0).setCreatedDate(pDate.getValue().toString());
+                            l.get(0).setDescription(pDes.getText());
+                            l.get(0).setActive(pActive.isSelected());
+                            s.updateProduct(l.get(0));
+                            this.cus.loadProduct();
+                            Utils.getAlertBox("Product updated successfully!", Alert.AlertType.INFORMATION, null, null).show();
+                            pName.setText("");
+                            pPrice.setText("");
+                            pImage.setText("");
+                            pActive.setSelected(false);
+                            pCreatedBy.setText("");
+                            pDate.setValue(null);
+                            pDes.setText(null);
+                        }
+                    }
                 }else
                     Utils.getAlertBox("Product's name not found", Alert.AlertType.ERROR, null, null).show();
             } catch (SQLException ex) {

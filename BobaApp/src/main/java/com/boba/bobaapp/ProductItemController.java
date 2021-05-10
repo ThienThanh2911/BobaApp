@@ -70,7 +70,11 @@ public class ProductItemController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(product.getCreatedDate(), formatter);
         this.pCreatedDate.setValue(localDate);
-        Image image = new Image(getClass().getResourceAsStream(product.getImage()));
+        Image image;
+        if(product.getImage() != null && !"".equals(product.getImage()))
+            image = new Image(getClass().getResourceAsStream(product.getImage()));
+        else
+            image = new Image(getClass().getResourceAsStream("/images/noimage.jpg"));
         pImage.setImage(image);
     }
     
