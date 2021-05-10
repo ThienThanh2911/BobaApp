@@ -5,6 +5,7 @@
  */
 package com.boba.service;
 
+import static com.boba.bobaapp.RegisterController.getMD5;
 import com.boba.pojo.User;
 import java.sql.Connection;
 import java.sql.SQLDataException;
@@ -86,7 +87,7 @@ public class UserTester {
         Assertions.assertEquals(true, u.getUser("thienthanh2911"));
     }
     @Test
-    @Order(4)
+    @Order(5)
     @DisplayName("Kiểm thử tìm kiếm đúng tài khoản người dùng")
     public void testWithUnknowKeyword() throws SQLException {
         UserService u = new UserService(conn);
@@ -94,11 +95,74 @@ public class UserTester {
         Assertions.assertEquals(false, u.getUser("fweFWE#@"));
     }
     @Test
-    @Order(5)
+    @Order(6)
     @DisplayName("Kiểm thử kiểm tài khoản người dùng có tồn tại hay không")
     public void testUserExist() throws SQLException {
         UserService u = new UserService(conn);
         
         Assertions.assertEquals(true, u.getUser("thientuu2911"));
+    }
+    @Test
+    @Order(7)
+    @DisplayName("Kiểm thử đăng nhập thành công")
+    public void testLoginSuccess() throws SQLException {
+        UserService u = new UserService(conn);
+        
+        Assertions.assertEquals("thientuu2911", u.checkUser("thientuu2911", "1c22e0f5c09af510a15da64a6499e3df").getUsername());
+    }
+    
+    @Test
+    @Order(8)
+    @DisplayName("Kiểm thử đăng nhập thất bại")
+    public void testLoginFail() throws SQLException {
+        UserService u = new UserService(conn);
+        
+        Assertions.assertEquals(null, u.checkUser("thientuu2911", "fwefhehuio76427hjfdkw"));
+    }
+    
+    @Test
+    @Order(9)
+    @DisplayName("Kiểm thử thêm user với username không hợp lệ")
+    public void testAddUserWithInvalidUserName() throws SQLException {
+        UserService us = new UserService(conn);
+        User u = new User();
+        u.setFullname("fewsdew");
+        u.setEmail("fewkj");
+        u.setUsername(null);
+        u.setPassword(getMD5("fhwel;"));
+        us.addUser(u);
+        Assertions.assertEquals(false, us.addUser(u));
+    }
+    
+    @Test
+    @Order(10)
+    @DisplayName("Kiểm thử thêm user")
+    public void testAddUser() throws SQLException {
+        UserService us = new UserService(conn);
+        User u = new User();
+        u.setFullname("fewfew");
+        u.setEmail("fewkj");
+        u.setUsername("fewfew");
+        u.setPassword(getMD5("fhwel;"));
+        Assertions.assertEquals(true, us.addUser(u));
+    }
+    
+    @Test
+    @Order(11)
+    @DisplayName("Kiểm thử chỉnh sửa user")
+    public void testUpdateUser() throws SQLException {
+        UserService us = new UserService(conn);
+        User u = us.getUsers("fewfew").get(0);
+        u.setUsername("trgreasd");
+        Assertions.assertEquals(true, us.updateUser(u));
+    }
+    
+    @Test
+    @Order(12)
+    @DisplayName("Kiểm thử xóa user")
+    public void testRemoveUser() throws SQLException {
+        UserService us = new UserService(conn);
+        
+        Assertions.assertEquals(true, us.removeUser(us.getUsers("trgreasd").get(0)));
     }
 }
