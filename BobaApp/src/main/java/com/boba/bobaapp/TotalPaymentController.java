@@ -11,6 +11,7 @@ import com.boba.service.PaymentService;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -56,8 +57,9 @@ public class TotalPaymentController implements Initializable {
                     if((localDate.getMonth().toString()).equals(java.time.LocalDate.now().getMonth().toString()))
                         tMonth = tMonth + Integer.parseInt(l.getTotalPrice().toString());
                 }
-                totalToday.setText(String.valueOf(tDay) + " VNĐ");
-                totalMonth.setText(String.valueOf(tMonth) + " VNĐ");
+                DecimalFormat formatter = new DecimalFormat("###,###,###.##");
+                totalToday.setText(formatter.format(tDay) + " VNĐ");
+                totalMonth.setText(formatter.format(tMonth) + " VNĐ");
             }
         } catch (SQLException ex) {
             Logger.getLogger(TotalPaymentController.class.getName()).log(Level.SEVERE, null, ex);

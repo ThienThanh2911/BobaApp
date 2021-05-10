@@ -88,12 +88,13 @@ public class UserTester {
     }
     @Test
     @Order(5)
-    @DisplayName("Kiểm thử tìm kiếm đúng tài khoản người dùng")
+    @DisplayName("Kiểm thử tìm kiếm sai tài khoản người dùng")
     public void testWithUnknowKeyword() throws SQLException {
         UserService u = new UserService(conn);
         
         Assertions.assertEquals(false, u.getUser("fweFWE#@"));
     }
+    
     @Test
     @Order(6)
     @DisplayName("Kiểm thử kiểm tài khoản người dùng có tồn tại hay không")
@@ -102,6 +103,7 @@ public class UserTester {
         
         Assertions.assertEquals(true, u.getUser("thientuu2911"));
     }
+    
     @Test
     @Order(7)
     @DisplayName("Kiểm thử đăng nhập thành công")
