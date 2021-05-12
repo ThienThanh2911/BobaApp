@@ -19,7 +19,7 @@ public class Product {
     private BigDecimal price;
     private String description;
     private String createdDate;
-    private String createdBy;
+    private int createdBy;
     private boolean active;
 
     /**
@@ -109,14 +109,14 @@ public class Product {
     /**
      * @return the createdBy
      */
-    public String getCreatedBy() {
+    public int getCreatedBy() {
         return createdBy;
     }
 
     /**
      * @param createdBy the createdBy to set
      */
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(int createdBy) {
         this.createdBy = createdBy;
     }
 

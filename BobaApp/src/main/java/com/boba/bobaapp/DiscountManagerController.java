@@ -116,7 +116,7 @@ public class DiscountManagerController implements Initializable {
                         Utils.getAlertBox("You haven't entered discount code", Alert.AlertType.ERROR, null, null).show();
                     else{
                         if(!s.getDiscounts(discountCode.getText()).isEmpty()){
-                            if(discountCode.getText().equals(s.getDiscounts(discountCode.getText()).get(0).getDiscountCode()))
+                            if(discountCode.getText().equals(s.getDiscounts(discountCode.getText()).get(0).getDiscountCode()) && !discountCode.getText().equals(l.get(0).getDiscountCode()))
                                 Utils.getAlertBox("This discount code already exists!", Alert.AlertType.ERROR, null, null).show();
                             else{
                                 l.get(0).setDiscountCode(discountCode.getText());

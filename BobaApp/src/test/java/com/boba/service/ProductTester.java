@@ -123,7 +123,7 @@ public class ProductTester {
         Product p = new Product();
         p.setName("ABC");
         p.setPrice(new BigDecimal(99999));
-        p.setCreatedBy("asdw");
+        p.setCreatedBy(19);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(java.time.LocalDate.now().toString(), formatter);
         p.setCreatedDate(localDate.toString());

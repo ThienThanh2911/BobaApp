@@ -94,7 +94,7 @@ public class LoginController implements Initializable {
                 if(u != null && u.getRole().equals("ADMIN")){
                     try {
                         App.role = "ADMIN";
-                        App.name = u.getFullname();
+                        App.id = u.getId();
                         Stage old = (Stage)this.btnLogin.getScene().getWindow();
                         old.close();
                         Parent root1= FXMLLoader.load(getClass().getResource("customer.fxml"));
@@ -111,7 +111,7 @@ public class LoginController implements Initializable {
                 } else if(u != null && u.getRole().equals("USER")){
                     try {
                         App.role = "USER";
-                        App.name = u.getFullname();
+                        App.id = u.getId();
                         Stage old = (Stage)this.btnLogin.getScene().getWindow();
                         old.close();
                         Parent root1= FXMLLoader.load(getClass().getResource("customer.fxml"));

@@ -8,6 +8,7 @@ package com.boba.bobaapp;
 import com.boba.pojo.Product;
 import com.boba.service.JdbcUtils;
 import com.boba.service.ProductService;
+import com.boba.service.UserService;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXToggleButton;
@@ -71,7 +72,7 @@ public class ProductManagerController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(product.getCreatedDate(), formatter);
         this.pDate.setValue(localDate);
-        this.pCreatedBy.setText(product.getCreatedBy());
+        this.pCreatedBy.setText(String.valueOf(product.getCreatedBy()));
         this.pImage.setText(product.getImage());
         this.pActive.setSelected(product.isActive());
     }
@@ -86,15 +87,16 @@ public class ProductManagerController implements Initializable {
             try{
                 Connection conn = JdbcUtils.getConn();
                 ProductService s = new ProductService(conn);
+		UserService us = new UserService(conn);
                 Product product = new Product();
                 product.setName(pName.getText());
                 product.setPrice(BigDecimal.valueOf(Integer.parseInt(pPrice.getText())));
                 product.setImage(pImage.getText());
-                product.setCreatedBy(pCreatedBy.getText());
+		product.setCreatedBy(Integer.parseInt(pCreatedBy.getText()));
                 product.setCreatedDate(pDate.getValue().toString());
                 product.setDescription(pDes.getText());
                 product.setActive(pActive.isSelected());
-                if(product.getName() == null || product.getPrice()== null || product.getCreatedBy()== null || product.getDescription()== null || product.getCreatedDate()== null || product.getImage() == null)
+                if(product.getName() == null || product.getPrice()== null || product.getCreatedBy()== 0 || product.getDescription()== null || product.getCreatedDate()== null || product.getImage() == null)
                     Utils.getAlertBox("You haven't entered all data", Alert.AlertType.ERROR, null, null).show();
                 else {
                     if(!s.getProducts(product.getName()).isEmpty()){
@@ -143,7 +145,7 @@ public class ProductManagerController implements Initializable {
                                 l.get(0).setName(pName.getText());
                                 l.get(0).setPrice(BigDecimal.valueOf(Integer.parseInt(pPrice.getText())));
                                 l.get(0).setImage(pImage.getText());
-                                l.get(0).setCreatedBy(pCreatedBy.getText());
+                                l.get(0).setCreatedBy(Integer.parseInt(pCreatedBy.getText()));
                                 l.get(0).setCreatedDate(pDate.getValue().toString());
                                 l.get(0).setDescription(pDes.getText());
                                 l.get(0).setActive(pActive.isSelected());
@@ -162,7 +164,7 @@ public class ProductManagerController implements Initializable {
                             l.get(0).setName(pName.getText());
                             l.get(0).setPrice(BigDecimal.valueOf(Integer.parseInt(pPrice.getText())));
                             l.get(0).setImage(pImage.getText());
-                            l.get(0).setCreatedBy(pCreatedBy.getText());
+                            l.get(0).setCreatedBy(Integer.parseInt(pCreatedBy.getText()));
                             l.get(0).setCreatedDate(pDate.getValue().toString());
                             l.get(0).setDescription(pDes.getText());
                             l.get(0).setActive(pActive.isSelected());

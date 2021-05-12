@@ -22,7 +22,7 @@ public class App extends Application {
     public static Stage stage = null;
     public static List<ArrayList> cart = new ArrayList<>();
     public static String role = null;
-    public static String name = null;
+    public static int id = 0;
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("loginUI"));

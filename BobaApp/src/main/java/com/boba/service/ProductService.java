@@ -42,7 +42,7 @@ public class ProductService {
             p.setName(rs.getString("name"));
             p.setPrice(rs.getBigDecimal("price"));
             p.setImage(rs.getString("image"));
-            p.setCreatedBy(rs.getString("created_by"));
+            p.setCreatedBy(rs.getInt("created_by"));
             p.setCreatedDate(rs.getString("created_date"));
             p.setActive(rs.getBoolean("active"));
             p.setDescription(rs.getString("description"));
@@ -69,7 +69,7 @@ public class ProductService {
             p.setName(rs.getString("name"));
             p.setPrice(rs.getBigDecimal("price"));
             p.setImage(rs.getString("image"));
-            p.setCreatedBy(rs.getString("created_by"));
+            p.setCreatedBy(rs.getInt("created_by"));
             p.setCreatedDate(rs.getString("created_date"));
             p.setActive(rs.getBoolean("active"));
             p.setDescription(rs.getString("description"));
@@ -98,7 +98,7 @@ public class ProductService {
             stm.setString(3, p.getImage());
             stm.setString(4, p.getDescription());
             stm.setString(5, p.getCreatedDate());
-            stm.setString(6, p.getCreatedBy());
+            stm.setInt(6, p.getCreatedBy());
             stm.setBoolean(7, p.isActive());
             
             int rows = stm.executeUpdate();

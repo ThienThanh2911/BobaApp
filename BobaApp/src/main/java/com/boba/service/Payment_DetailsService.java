@@ -6,10 +6,10 @@
 package com.boba.service;
 
 import com.boba.pojo.Payment;
+import com.boba.pojo.Payment_Details;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -21,19 +21,18 @@ import java.util.logging.Logger;
  *
  * @author ADMIN
  */
-public class PaymentService {
+public class Payment_DetailsService {
     private Connection conn;
     
-    public PaymentService(Connection conn) {
+    public Payment_DetailsService(Connection conn) {
         this.conn = conn;
     }
-    public boolean addPayment(Payment p) {
+    public boolean addPayment(Payment_Details p) {
         try {
-            String sql = "INSERT INTO payment(total_price, created_by, created_date) VALUES(?, ?, ?)";
+            String sql = "INSERT INTO payment_details(payment_id, product_id) VALUES(?, ?)";
             PreparedStatement stm = this.conn.prepareStatement(sql);
-            stm.setBigDecimal(1, p.getTotalPrice());
-            stm.setInt(2, p.getCreatedBy());
-            stm.setString(3, p.getCreatedDate());
+            stm.setInt(1, p.getPayment_id());
+            stm.setInt(2, p.getProduct_id());
             
             int rows = stm.executeUpdate();
             
@@ -44,17 +43,15 @@ public class PaymentService {
         
         return false;
     }
-    public List<Payment> getPayments() throws SQLException {
+    public List<Payment_Details> getPayments() throws SQLException {
         
         Statement stm = conn.createStatement();
-        ResultSet rs = stm.executeQuery("SELECT * FROM payment ORDER BY id DESC");
-        List<Payment> payments = new ArrayList<>();
+        ResultSet rs = stm.executeQuery("SELECT * FROM payment_details");
+        List<Payment_Details> payments = new ArrayList<>();
         while (rs.next()) {
-            Payment p = new Payment();
-            p.setId(rs.getInt("id"));
-            p.setTotalPrice(rs.getBigDecimal("total_price"));
-            p.setCreatedBy(rs.getInt("created_by"));
-            p.setCreatedDate(rs.getString("created_date"));
+            Payment_Details p = new Payment_Details();
+            p.setPayment_id(rs.getInt("payment_id"));
+            p.setProduct_id(rs.getInt("product_id"));
             
             payments.add(p);
         }

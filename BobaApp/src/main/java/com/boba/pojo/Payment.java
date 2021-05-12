@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class Payment {
     private int id;
     private BigDecimal totalPrice;
-    private String createdBy;
+    private int createdBy;
     private String createdDate;
 
     /**
@@ -48,14 +48,14 @@ public class Payment {
     /**
      * @return the createdBy
      */
-    public String getCreatedBy() {
+    public int getCreatedBy() {
         return createdBy;
     }
 
     /**
      * @param createdBy the createdBy to set
      */
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(int createdBy) {
         this.createdBy = createdBy;
     }
 

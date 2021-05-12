@@ -6,10 +6,16 @@
 package com.boba.bobaapp;
 
 import com.boba.pojo.Payment;
+import com.boba.service.JdbcUtils;
+import com.boba.service.UserService;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
@@ -36,10 +42,18 @@ public class PaymentHistoryController implements Initializable {
     private Payment payment;
     
     public void setData(Payment payment){
-        this.payment = payment;
-        this.pmID.setText(String.valueOf(payment.getId()));
-        this.totalPrice.setText(payment.getTotalPrice().toString());
-        this.createdBy.setText(payment.getCreatedBy());
+            this.payment = payment;
+            this.pmID.setText(String.valueOf(payment.getId()));
+            this.totalPrice.setText(payment.getTotalPrice().toString());
+        try {
+            Connection conn;
+            conn = JdbcUtils.getConn();
+            UserService s = new UserService(conn);
+            this.createdBy.setText(s.getUsers(payment.getCreatedBy()).get(0).getFullname());
+        } catch (SQLException ex) {
+            Logger.getLogger(PaymentHistoryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(payment.getCreatedDate(), formatter);
         this.createdDate.setValue(localDate);

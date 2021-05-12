@@ -55,7 +55,7 @@ public class PaymentTester {
     public void testAddNewPayment() throws SQLException {
         PaymentService ps = new PaymentService(conn);
         Payment p = new Payment();
-        p.setCreatedBy("Thiên Thành");
+        p.setCreatedBy(19);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(java.time.LocalDate.now().toString(), formatter);
         p.setCreatedDate(localDate.toString());
@@ -70,7 +70,7 @@ public class PaymentTester {
     public void testAddNewPaymentWithInvalidCreatedBy() throws SQLException {
         PaymentService ps = new PaymentService(conn);
         Payment p = new Payment();
-        p.setCreatedBy(null);
+        p.setCreatedBy(0);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(java.time.LocalDate.now().toString(), formatter);
         p.setCreatedDate(localDate.toString());
@@ -85,7 +85,7 @@ public class PaymentTester {
     public void testAddNewPaymentWithInvalidCreatedDate() throws SQLException {
         PaymentService ps = new PaymentService(conn);
         Payment p = new Payment();
-        p.setCreatedBy("Thiên Thành");
+        p.setCreatedBy(19);
         p.setCreatedDate(null);
         p.setTotalPrice(new BigDecimal(999999));
         ps.addPayment(p);

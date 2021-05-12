@@ -7,11 +7,13 @@ package com.boba.bobaapp;
 
 import com.boba.pojo.Discount;
 import com.boba.pojo.Payment;
+import com.boba.pojo.Payment_Details;
 import com.boba.pojo.Product;
 import com.boba.pojo.User;
 import com.boba.service.DiscountService;
 import com.boba.service.JdbcUtils;
 import com.boba.service.PaymentService;
+import com.boba.service.Payment_DetailsService;
 import com.boba.service.ProductService;
 import com.boba.service.UserService;
 import com.jfoenix.controls.JFXButton;
@@ -407,6 +409,7 @@ public class CustomerController implements Initializable{
                             list.add(product.getName());
                             list.add(product.getPrice().toString());
                             list.add("1");
+                            list.add(String.valueOf(product.getId()));
                             App.cart.add(list);
                         }
                         loadBill();
@@ -491,9 +494,16 @@ public class CustomerController implements Initializable{
                 PaymentService s = new PaymentService(conn);
                 Payment p = new Payment();
                 p.setTotalPrice(BigDecimal.valueOf(totalPri - totalPri*dis/100));
-                p.setCreatedBy(App.name);
+                p.setCreatedBy(App.id);
                 p.setCreatedDate(java.time.LocalDate.now().toString());
                 if(s.addPayment(p)){
+                    for (ArrayList cart : App.cart) {
+                        Payment_Details pd = new Payment_Details();
+                        Payment_DetailsService ps = new Payment_DetailsService(conn);
+                        pd.setPayment_id(s.getPayments().get(0).getId());
+                        pd.setProduct_id(Integer.parseInt(cart.get(3).toString()));
+                        ps.addPayment(pd);
+                    }
                     Utils.getAlertBox("Payment successfully", Alert.AlertType.INFORMATION, null, null).show();
                     resetBill();
                 }
